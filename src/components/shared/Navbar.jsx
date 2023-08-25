@@ -4,9 +4,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="w-full bg-gray-800 bg-opacity-70 text-gray-100 body-font mb-4 shadow-sm">
+    <header className="w-full fixed z-10 container mx-auto bg-black bg-opacity-30 text-gray-100 body-font mb-4 shadow-sm">
       {/* :DESKTOP MENU */}
-      <div className="container mx-auto flex justify-between items-center py-7 px-5">
+      <div className="container mx-auto flex justify-between items-center py-5 px-5">
         {/* Site logo and Name */}
         <a
           href="#link"
