@@ -13,7 +13,7 @@ const Navbar = () => {
           className="flex flex-shrink-0 title-font font-medium items-center text-gray-900 md:mb-0"
         >
           
-          <span className="ml-3 text-xl text-gray-100 font-semibold antialiased">
+          <span className="ml-3 text-2xl text-gray-100 font-semibold antialiased">
             Dine<span className="text-red-700">Ease</span>
           </span>
         </a>
