@@ -21,7 +21,7 @@ const PopularMenu = () => {
           <FoodItems key={item._id} item={item}></FoodItems>
         ))}
       </div>
-      <button className="mt-20 text-xl border-b-2 p-5 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105">See More</button>
+      <button className="mt-20 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105">See More</button>
     </div>
   );
 };

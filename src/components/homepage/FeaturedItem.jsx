@@ -20,7 +20,7 @@ const FeaturedItem = () => {
 
               <a
                 href="#"
-                className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-red-500 border border-red-900 rounded hover:bg-red-700 focus:outline-none focus:ring"
+                className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-red-500  rounded hover:bg-red-700 focus:outline-none focus:ring"
               >
                 See Menu
               </a>

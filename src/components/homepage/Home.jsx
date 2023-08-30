@@ -1,5 +1,7 @@
 import SectionTitle from "../shared/SectionTitle";
 import Banner from "./Banner";
+import CallUs from "./CallUs";
+import ChefRecommends from "./ChefRecommends";
 import FeaturedItem from "./FeaturedItem";
 import PopularMenu from "./PopularMenu";
 import Services from "./Services";
@@ -19,6 +21,12 @@ const Home = () => {
         <SectionTitle title="Featured This Week"></SectionTitle>
 
         <FeaturedItem></FeaturedItem>
+      </div>
+      <div className="mb-20">
+        <CallUs></CallUs>
+      </div>
+      <div className="mb-20">
+        <ChefRecommends></ChefRecommends>
       </div>
     </div>
   );
