@@ -1,37 +1,42 @@
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const links = (
+    <>
+      <NavLink to='/' className="mr-8 hover:text-gray-300">
+        Home
+      </NavLink>
+      <NavLink to="menu" className="mr-8 hover:text-gray-300">
+        Menu
+      </NavLink>
+      <NavLink href="#link" className="mr-8 hover:text-gray-300">
+        About
+      </NavLink>
+      <NavLink href="#link" className="mr-8 hover:text-gray-300">
+        Contact
+      </NavLink>
+    </>
+  );
 
   return (
     <header className="w-full fixed z-10 container mx-auto bg-black bg-opacity-30 text-gray-100 body-font mb-4 shadow-sm">
-      {/* :DESKTOP MENU */}
       <div className="container mx-auto flex justify-between items-center py-5 px-5">
-        {/* Site logo and Name */}
         <a
           href="#link"
           className="flex flex-shrink-0 title-font font-medium items-center text-gray-900 md:mb-0"
         >
-          
           <span className="ml-3 text-2xl text-gray-100 font-semibold antialiased">
             Dine<span className="text-red-700">Ease</span>
           </span>
         </a>
         {/* Navbar */}
-        <nav className="hidden md:ml-auto md:flex flex-wrap items-center justify-center text-base tracking-wide">
-          <a href="#link" className="mr-8 hover:text-gray-300">
-            Home
-          </a>
-          <a href="#link" className="mr-8 hover:text-gray-300">
-            Menu
-          </a>
-          <a href="#link" className="mr-8 hover:text-gray-300">
-            About
-          </a>
-          <a href="#link" className="mr-8 hover:text-gray-300">
-            Contact
-          </a>
-        </nav>
+        <div className="hidden md:ml-auto md:flex flex-wrap items-center justify-center text-base tracking-wide">
+          {
+            links
+          }
+        </div>
         {/* Avatar */}
         <div className="hidden sm:inline-flex ml-auto md:ml-0 mr-4 md:mr-0 cursor-pointer">
           <svg
@@ -49,7 +54,7 @@ const Navbar = () => {
             />
           </svg>
         </div>
-        {/* Burger icon standard */}
+
         <button
           className="md:hidden rounded-md active:outline-none focus:outline-none focus:ring-2 focus:ring-inset focus:ring-yellow-500"
           onClick={() => setIsOpen(!isOpen)}
@@ -71,33 +76,11 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* :MOBILE MENU */}
       {isOpen && (
         <div className="w-full flex flex-col py-4 px-3 md:hidden bg-gray-900 text-base uppercase text-center font-semibold">
-          <a
-            href="#link"
-            className="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            Home
-          </a>
-          <a
-            href="#link"
-            className="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-           Menu
-          </a>
-          <a
-            href="#link"
-            className="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            About
-          </a>
-          <a
-            href="#link"
-            className="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700"
-          >
-            Contact
-          </a>
+         {
+          links
+         }
         </div>
       )}
     </header>
