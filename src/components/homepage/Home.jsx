@@ -2,6 +2,7 @@ import SectionTitle from "../shared/SectionTitle";
 import Banner from "./Banner";
 import CallUs from "./CallUs";
 import ChefRecommends from "./ChefRecommends";
+import ClintReview from "./ClintReview";
 import FeaturedItem from "./FeaturedItem";
 import FromOurMenu from "./FromOurMenu";
 import PopularMenu from "./PopularMenu";
@@ -33,6 +34,8 @@ const Home = () => {
       <div className="mb-20">
         <FromOurMenu></FromOurMenu>
       </div>
+      <SectionTitle title="Our clint reviews"></SectionTitle>
+      <ClintReview></ClintReview>
     </div>
   );
 };

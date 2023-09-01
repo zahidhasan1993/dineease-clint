@@ -1,0 +1,21 @@
+  .keen-slider {
+    height: 200px;
+  }
+  
+  .buttons {
+    display: flex;
+    padding-top: 7px;
+    justify-content: center;
+  }
+  
+  button {
+    min-width: 100px;
+    margin: 0 10px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    font-size: 13px;
+    padding: 7px 15px;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  
