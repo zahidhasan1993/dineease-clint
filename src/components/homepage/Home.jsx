@@ -1,3 +1,4 @@
+import useTitle from "../../customhooks/useTitle";
 import SectionTitle from "../shared/SectionTitle";
 import Banner from "./Banner";
 import CallUs from "./CallUs";
@@ -9,6 +10,7 @@ import PopularMenu from "./PopularMenu";
 import Services from "./Services";
 
 const Home = () => {
+  useTitle('DineEase | Home')
   return (
     <div>
       <Banner></Banner>
