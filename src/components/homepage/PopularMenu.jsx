@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import FoodItems from "../shared/FoodItems";
 import useMenu from "../../customhooks/useMenu";
 
