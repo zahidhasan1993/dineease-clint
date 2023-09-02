@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import useTitle from "../../customhooks/useTitle";
 import SectionTitle from "../shared/SectionTitle";
 import Banner from "./Banner";
@@ -10,7 +11,12 @@ import PopularMenu from "./PopularMenu";
 import Services from "./Services";
 
 const Home = () => {
-  useTitle('DineEase | Home')
+  useTitle("DineEase | Home");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div>
       <Banner></Banner>
@@ -36,7 +42,7 @@ const Home = () => {
       <div className="mb-20">
         <FromOurMenu></FromOurMenu>
       </div>
-      <SectionTitle title="Our clint reviews"></SectionTitle>
+      <SectionTitle title="What clink Says"></SectionTitle>
       <ClintReview></ClintReview>
     </div>
   );

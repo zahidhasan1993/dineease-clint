@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   return (
@@ -99,14 +101,14 @@ const Footer = () => {
             </h3>
             <nav className="flex justify-around md:flex-col font-medium list-none">
               <li>
-                <a href="#link" className="hover:text-gray-200">
+                <NavLink to="/" className="hover:text-gray-200">
                   Home
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a href="#link" className="hover:text-gray-200">
+                <NavLink to="/menu" className="hover:text-gray-200">
                   Menu
-                </a>
+                </NavLink>
               </li>
               <li>
                 <a href="#link" className="hover:text-gray-200">

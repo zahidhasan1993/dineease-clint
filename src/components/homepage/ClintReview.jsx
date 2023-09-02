@@ -20,7 +20,7 @@ const ClintReview = () => {
     <Swiper
       navigation={true}
       modules={[Navigation]}
-      className="mySwiper w-full h-[40rem]"
+      className="mySwiper w-[80%] h-[30rem] mb-20"
     >
       {reviews.map((review) => (
         <SwiperSlide key={review._id}>
