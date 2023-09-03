@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-      <div className="my-20">
+      <div className="mb-20 md:my-20">
         <Services></Services>
       </div>
       <div className="mb-20">
