@@ -77,7 +77,7 @@ const Contact = () => {
         {/* :MAIN CONTAINER */}
         <div className="relative space-y-5">
           {/* ::Title */}
-          <h2 className="text-center text-5xl text-red-700 font-light">
+          <h2 className="text-center text-5xl text-red-700 font-semibold underline">
             Contact Us
           </h2>
 

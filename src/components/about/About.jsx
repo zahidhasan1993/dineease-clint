@@ -92,7 +92,7 @@ const About = () => {
         
         <a
           href="https://github.com/zahidhasan1993"
-          className="group relative py-5 w-40 rounded-t-xl bg-white bg-opacity-50 text-center text-gray-600 font-semibold font-firacode transition-all duration-300 transform hover:pb-14"
+          className="group relative py-5 w-40 rounded-t-xl bg-white bg-opacity-50 text-center text-gray-600 font-semibold transition-all duration-300 transform hover:pb-14"
         >
           Our Works
           <svg
@@ -113,7 +113,7 @@ const About = () => {
         {/* ::Our Shop */}
         <Link
           to="/menu"
-          className="group relative py-5 w-40 rounded-t-xl bg-white bg-opacity-50 text-center text-gray-600 font-semibold font-firacode transition-all duration-300 transform hover:pb-14"
+          className="group relative py-5 w-40 rounded-t-xl bg-white bg-opacity-50 text-center text-gray-600 font-semibold transition-all duration-300 transform hover:pb-14"
         >
           Our Menu
           <svg
@@ -134,7 +134,7 @@ const About = () => {
         {/* ::Our Contact */}
         <Link
           to="/contact"
-          className="group relative py-5 w-40 rounded-t-xl bg-white bg-opacity-50 text-center text-gray-600 font-semibold font-firacode transition-all duration-300 transform hover:pb-14"
+          className="group relative py-5 w-40 rounded-t-xl bg-white bg-opacity-50 text-center text-gray-600 font-semibold transition-all duration-300 transform hover:pb-14"
         >
           Our Contact
           <svg
