@@ -4,6 +4,7 @@ import ErrorPage from "../components/extra/ErrorPage";
 import Home from "../components/homepage/Home";
 import Menu from "../components/menupage/Menu";
 import About from "../components/about/About";
+import Contact from "../components/about/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ export const router = createBrowserRouter([
         path: "/about",
         element: <About></About>,
       },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
+      }
     ],
   },
 ]);
