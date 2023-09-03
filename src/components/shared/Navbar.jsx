@@ -8,10 +8,10 @@ const Navbar = () => {
       <NavLink to='/' className="mr-8 hover:text-gray-300">
         Home
       </NavLink>
-      <NavLink to="menu" className="mr-8 hover:text-gray-300">
+      <NavLink to="/menu" className="mr-8 hover:text-gray-300">
         Menu
       </NavLink>
-      <NavLink href="#link" className="mr-8 hover:text-gray-300">
+      <NavLink to="/about" className="mr-8 hover:text-gray-300">
         About
       </NavLink>
       <NavLink href="#link" className="mr-8 hover:text-gray-300">
