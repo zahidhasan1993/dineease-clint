@@ -11,6 +11,9 @@ const Navbar = () => {
       <NavLink to="/menu" className="mr-8 hover:text-gray-300">
         Menu
       </NavLink>
+      <NavLink to="/shop/pizza" className="mr-8 hover:text-gray-300">
+        Shop
+      </NavLink>
       <NavLink to="/about" className="mr-8 hover:text-gray-300">
         About
       </NavLink>

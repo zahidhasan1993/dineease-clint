@@ -5,6 +5,7 @@ import Home from "../components/homepage/Home";
 import Menu from "../components/menupage/Menu";
 import About from "../components/about/About";
 import Contact from "../components/about/Contact";
+import Shop from "../Shop/Shop";
 
 export const router = createBrowserRouter([
   {
@@ -26,8 +27,12 @@ export const router = createBrowserRouter([
       },
       {
         path: "/contact",
-        element: <Contact></Contact>
-      }
+        element: <Contact></Contact>,
+      },
+      {
+        path: "/shop/:category",
+        element: <Shop></Shop>,
+      },
     ],
   },
 ]);
