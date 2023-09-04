@@ -8,12 +8,14 @@ import {
 } from "react-simple-captcha";
 import { useEffect } from "react";
 import Swal from 'sweetalert2';
+import useTitle from "../customhooks/useTitle";
 
 
 const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+  useTitle("DineEase | Login");
   const {
     register,
     handleSubmit,
@@ -21,6 +23,7 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
+    
     const captcha = data.captcha;
     if(validateCaptcha(captcha)){
         Swal.fire({

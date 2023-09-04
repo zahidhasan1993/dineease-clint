@@ -6,10 +6,15 @@ import {
     LoadCanvasTemplate,
     validateCaptcha,
   } from "react-simple-captcha";
-  import { useEffect } from "react";
+  import { useContext, useEffect } from "react";
   import Swal from 'sweetalert2';
+import { DataProvider } from "../providers/AuthProvider";
+import useTitle from "../customhooks/useTitle";
 
 const Register = () => {
+    useTitle("DineEase | register")
+    const value = useContext(DataProvider);
+    console.log(value);
     const { register,handleSubmit, formState: { errors } } = useForm();
     
     useEffect(() => {
