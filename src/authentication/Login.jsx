@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import img from "../assets/login/login.jpg"
 
 const Login = () => {
@@ -58,7 +59,7 @@ const Login = () => {
       <div className="lg:w-1/2 w-full bg-black flex items-center">
         <div className="py-12 lg:py-24 px-4 lg:px-24 mx-auto text-center">
           <h1 className="text-4xl lg:text-5xl text-white font-extrabold tracking-wide">
-            Sign up and order in discount
+            Sign in and order in discount
           </h1>
           <p className="text-gray-500 mt-4">
             Join us to get unique offers
@@ -115,9 +116,9 @@ const Login = () => {
             <div className="mt-4">
               <div className="text-sm font-semibold text-gray-300 text-center">
                 Dont have an account?{" "}
-                <a href="#" className="text-blue-500 hover:text-blue-400">
+                <Link to="/register" className="text-blue-500 hover:text-blue-400">
                   Sign Up
-                </a>
+                </Link>
               </div>
             </div>
           </form>
