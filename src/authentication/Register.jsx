@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 import img from "../assets/login/register.jpg";
+import { useForm } from 'react-hook-form';
+
 const Register = () => {
+    const { register,handleSubmit, formState: { errors } } = useForm();
+    
+    const onSubmit = data => {
+        console.log(data);
+    }
+
   return (
     <section className="min-h-screen flex items-stretch text-white">
       <div
@@ -58,7 +66,7 @@ const Register = () => {
             Register and order in discount
           </h1>
           <p className="text-gray-500 mt-4">Join us to get unique offers</p>
-          <form className="mt-12">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-12">
             <div>
               <div className="mb-2 text-left">
                 <label
@@ -72,8 +80,11 @@ const Register = () => {
                   id="name"
                   name="name"
                   className="w-full bg-gray-800 text-white text-base py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-700 focus:border-blue-500 transition-colors"
-                  placeholder="Enter your email address"
+                  placeholder="Enter your name"
+                  {...register("name", { required: "Name is required", maxLength: { value: 20, message: "Name must be at most 20 characters" } })}
+                  
                 />
+                {errors.name && <p className="text-red-700 text-xl">{errors.name.message}</p>}
               </div>
               <div className="mb-2 text-left">
                 <label
@@ -88,7 +99,15 @@ const Register = () => {
                   name="email"
                   className="w-full bg-gray-800 text-white text-base py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-700 focus:border-blue-500 transition-colors"
                   placeholder="Enter your email address"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                      message: "Invalid email address",
+                    },
+                  })}
                 />
+                {errors.email && <p className="text-xl text-red-700">{errors.email.message}</p>}
               </div>
               <div className="mb-2 text-left">
                 <label
@@ -103,13 +122,26 @@ const Register = () => {
                   name="password"
                   className="w-full bg-gray-800 text-white text-base py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-700 focus:border-blue-500 transition-colors"
                   placeholder="Enter your password"
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be at least 8 characters long",
+                    },
+                    pattern: {
+                      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~]).*$/,
+                      message: "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character",
+                    },
+                  })}
                 />
+                {errors.password && <p className="text-xl text-red-700">{errors.password.message}</p>}
+
               </div>
             </div>
             <div className="mt-8">
               <button
                 className="bg-blue-500 text-white active:bg-blue-600 text-sm font-bold uppercase px-6 py-3 rounded-full shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full"
-                type="button"
+                type="submit"
               >
                 Sign Up
               </button>
@@ -125,7 +157,7 @@ const Register = () => {
             <div className="mt-4">
               <div className="text-sm font-semibold text-gray-300 text-center">
                 All Ready have an account?{" "}
-                <Link href="#" className="text-blue-500 hover:text-blue-400">
+                <Link to="/login" className="text-blue-500 hover:text-blue-400">
                   Sign In
                 </Link>
               </div>
