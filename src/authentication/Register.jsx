@@ -1,13 +1,43 @@
 import { Link } from "react-router-dom";
 import img from "../assets/login/register.jpg";
 import { useForm } from 'react-hook-form';
+import {
+    loadCaptchaEnginge,
+    LoadCanvasTemplate,
+    validateCaptcha,
+  } from "react-simple-captcha";
+  import { useEffect } from "react";
+  import Swal from 'sweetalert2';
 
 const Register = () => {
     const { register,handleSubmit, formState: { errors } } = useForm();
     
-    const onSubmit = data => {
-        console.log(data);
-    }
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+      }, []);
+
+      const onSubmit = (data) => {
+        const captcha = data.captcha;
+        if(validateCaptcha(captcha)){
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Captcha is correct',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
+        else{
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Captcha is not correct',
+                showConfirmButton: false,
+                timer: 1500
+              })
+        }
+        console.log(data.captcha);
+      };
 
   return (
     <section className="min-h-screen flex items-stretch text-white">
@@ -136,6 +166,23 @@ const Register = () => {
                 />
                 {errors.password && <p className="text-xl text-red-700">{errors.password.message}</p>}
 
+              </div>
+              <div className="mb-2 text-left">
+                <label
+                  htmlFor="captcha"
+                  className="text-sm font-bold tracking-wide"
+                >
+                  <LoadCanvasTemplate />
+                </label>
+                <input
+                  type="text"
+                  id="captcha"
+                  name="captcha"
+                  className="w-full bg-gray-800 text-white text-base py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-700 focus:border-blue-500 transition-colors"
+                  placeholder="Enter captcha above"
+                  required
+                  {...register("captcha")}
+                />
               </div>
             </div>
             <div className="mt-8">

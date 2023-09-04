@@ -1,21 +1,53 @@
 import { Link } from "react-router-dom";
-import img from "../assets/login/login.jpg"
-import { useForm } from 'react-hook-form';
+import img from "../assets/login/login.jpg";
+import { useForm } from "react-hook-form";
+import {
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
+import { useEffect } from "react";
+import Swal from 'sweetalert2';
 
 
 const Login = () => {
-    const { register,handleSubmit, formState: { errors } } = useForm();
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-    const onSubmit = data => {
-        console.log(data);
+  const onSubmit = (data) => {
+    const captcha = data.captcha;
+    if(validateCaptcha(captcha)){
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Captcha is correct',
+            showConfirmButton: false,
+            timer: 1500
+          })
     }
+    else{
+        Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            title: 'Captcha is not correct',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }
+    console.log(data.captcha);
+  };
   return (
     <section className="min-h-screen flex items-stretch text-white">
       <div
         className="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center"
         style={{
-          backgroundImage:
-            `url(${img})`,
+          backgroundImage: `url(${img})`,
         }}
       >
         <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
@@ -23,9 +55,7 @@ const Login = () => {
           <h1 className="text-5xl font-bold text-left tracking-wide">
             Dine<span className="text-red-700">Ease</span>
           </h1>
-          <p className="text-3xl my-4">
-            Order Your Favorite Food Anytime.
-          </p>
+          <p className="text-3xl my-4">Order Your Favorite Food Anytime.</p>
         </div>
         <div className="bottom-0 absolute p-4 text-center right-0 left-0 flex justify-center space-x-4">
           <a href="https://twitter.com/?lang=en">
@@ -68,9 +98,7 @@ const Login = () => {
           <h1 className="text-4xl lg:text-5xl text-white font-extrabold tracking-wide">
             Sign in and order in discount
           </h1>
-          <p className="text-gray-500 mt-4">
-            Join us to get unique offers
-          </p>
+          <p className="text-gray-500 mt-4">Join us to get unique offers</p>
           <form onSubmit={handleSubmit(onSubmit)} className="mt-12">
             <div>
               <div className="mb-2 text-left">
@@ -94,7 +122,9 @@ const Login = () => {
                     },
                   })}
                 />
-                {errors.email && <p className="text-xl text-red-700">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="text-xl text-red-700">{errors.email.message}</p>
+                )}
               </div>
               <div className="mb-2 text-left">
                 <label
@@ -116,12 +146,35 @@ const Login = () => {
                       message: "Password must be at least 8 characters long",
                     },
                     pattern: {
-                      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~]).*$/,
-                      message: "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character",
+                      value:
+                        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~]).*$/,
+                      message:
+                        "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character",
                     },
                   })}
                 />
-                  {errors.password && <p className="text-xl text-red-700">{errors.password.message}</p>}
+                {errors.password && (
+                  <p className="text-xl text-red-700">
+                    {errors.password.message}
+                  </p>
+                )}
+              </div>
+              <div className="mb-2 text-left">
+                <label
+                  htmlFor="captcha"
+                  className="text-sm font-bold tracking-wide"
+                >
+                  <LoadCanvasTemplate />
+                </label>
+                <input
+                  type="text"
+                  id="captcha"
+                  name="captcha"
+                  className="w-full bg-gray-800 text-white text-base py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-700 focus:border-blue-500 transition-colors"
+                  placeholder="Enter captcha above"
+                  required
+                  {...register("captcha")}
+                />
               </div>
             </div>
             <div className="mt-8">
@@ -143,7 +196,10 @@ const Login = () => {
             <div className="mt-4">
               <div className="text-sm font-semibold text-gray-300 text-center">
                 Dont have an account?{" "}
-                <Link to="/register" className="text-blue-500 hover:text-blue-400">
+                <Link
+                  to="/register"
+                  className="text-blue-500 hover:text-blue-400"
+                >
                   Sign Up
                 </Link>
               </div>
