@@ -15,6 +15,8 @@ const Shop = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  
   const categories = ["pizza","salad","drinks","dessert","soup"];
   const {category} = useParams();
   const initialIndex = categories.indexOf(category)

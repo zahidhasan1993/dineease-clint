@@ -6,6 +6,8 @@ import Menu from "../components/menupage/Menu";
 import About from "../components/about/About";
 import Contact from "../components/about/Contact";
 import Shop from "../Shop/Shop";
+import Register from "../authentication/Register";
+import Login from "../authentication/Login";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
         path: "/shop/:category",
         element: <Shop></Shop>,
       },
+      {
+        path: "/register",
+        element: <Register></Register>
+      },
+      {
+        path: "/login",
+        element: <Login></Login>
+      }
     ],
   },
 ]);
