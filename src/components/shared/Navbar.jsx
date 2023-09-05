@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { DataProvider } from "../../providers/AuthProvider";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const { user } = useContext(DataProvider);
 
-  const user = false;
-
+  const handleMouseHover = () => {
+    setIsHover(!isHover);
+  };
   const links = (
     <>
       <NavLink to="/" className="mr-8 hover:text-gray-300">
@@ -25,7 +29,7 @@ const Navbar = () => {
       </NavLink>
     </>
   );
-
+  console.log(user);
   return (
     <header className="w-full fixed z-10 container mx-auto bg-black bg-opacity-30 text-gray-100 body-font mb-4 shadow-sm">
       <div className="container mx-auto flex justify-between items-center py-5 px-5">
@@ -44,22 +48,29 @@ const Navbar = () => {
         {/* Avatar */}
         <div className="hidden sm:inline-flex ml-auto md:ml-0 mr-4 md:mr-0 cursor-pointer">
           {user ? (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-8 w-8"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
+            <div onMouseEnter={handleMouseHover} onMouseLeave={handleMouseHover} className="flex gap-5 justify-center items-center">
+              {isHover && <p>{user.displayName}</p>}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              
+            </div>
           ) : (
-            <Link to="/login" className="px-5 py-3 bg-red-700 text-white hover:bg-red-500 hover:scale-125 duration-300 rounded-lg">
+            <Link
+              to="/login"
+              className="px-5 py-3 bg-red-700 text-white hover:bg-red-500 hover:scale-125 duration-300 rounded-lg"
+            >
               Login
             </Link>
           )}
@@ -106,7 +117,10 @@ const Navbar = () => {
                 />
               </svg>
             ) : (
-              <Link to="/login" className="px-5 py-3 bg-red-700 text-white hover:bg-red-500 hover:scale-125 duration-300 rounded-lg">
+              <Link
+                to="/login"
+                className="px-5 py-3 bg-red-700 text-white hover:bg-red-500 hover:scale-125 duration-300 rounded-lg"
+              >
                 Login
               </Link>
             )}
