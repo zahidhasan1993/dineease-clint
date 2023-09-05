@@ -1,9 +1,15 @@
 import { FaMailBulk } from "react-icons/fa";
 import { FaMapLocationDot, FaMobileScreenButton } from "react-icons/fa6";
+import useTitle from "../../customhooks/useTitle";
+import { useEffect } from "react";
 
 const Contact = () => {
+  useTitle("DineEase | Contact");
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  },[])
   return (
-    <div className="relative mx-auto py-32 w-full bg-gray-50">
+    <div className="relative mx-auto py-32 px-3 md:px-0 w-full bg-gray-50">
       <div className="mx-auto max-w-5xl">
         {/* :DOTS BACKGROUND */}
         <div>

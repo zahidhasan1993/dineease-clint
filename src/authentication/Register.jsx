@@ -13,6 +13,9 @@ import useTitle from "../customhooks/useTitle";
 
 const Register = () => {
   useTitle("DineEase | register");
+  useEffect(()=> {
+    window.scrollTo(0,0);
+  },[])
   const { emailLogin, googleLogin, updateUser } = useContext(DataProvider);
 
   const {
