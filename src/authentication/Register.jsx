@@ -1,48 +1,93 @@
 import { Link } from "react-router-dom";
 import img from "../assets/login/register.jpg";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import {
-    loadCaptchaEnginge,
-    LoadCanvasTemplate,
-    validateCaptcha,
-  } from "react-simple-captcha";
-  import { useContext, useEffect } from "react";
-  import Swal from 'sweetalert2';
+  loadCaptchaEnginge,
+  LoadCanvasTemplate,
+  validateCaptcha,
+} from "react-simple-captcha";
+import { useContext, useEffect } from "react";
+import Swal from "sweetalert2";
 import { DataProvider } from "../providers/AuthProvider";
 import useTitle from "../customhooks/useTitle";
 
 const Register = () => {
-    useTitle("DineEase | register")
-    const value = useContext(DataProvider);
-    console.log(value);
-    const { register,handleSubmit, formState: { errors } } = useForm();
-    
-    useEffect(() => {
-        loadCaptchaEnginge(6);
-      }, []);
+  useTitle("DineEase | register");
+  const { emailLogin, googleLogin, updateUser } = useContext(DataProvider);
 
-      const onSubmit = (data) => {
-        const captcha = data.captcha;
-        if(validateCaptcha(captcha)){
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Captcha is correct',
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  useEffect(() => {
+    loadCaptchaEnginge(6);
+  }, []);
+
+  const onSubmit = (data) => {
+    const captcha = data.captcha;
+    if (validateCaptcha(captcha)) {
+      emailLogin(data.email, data.password)
+        .then(() => {
+          updateUser()
+            .then(() => {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User register successful",
                 showConfirmButton: false,
-                timer: 1500
-              })
-        }
-        else{
-            Swal.fire({
-                position: 'top-end',
-                icon: 'error',
-                title: 'Captcha is not correct',
-                showConfirmButton: false,
-                timer: 1500
-              })
-        }
-        console.log(data.captcha);
-      };
+                timer: 1500,
+              });
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
+
+          reset();
+        })
+        .catch((error) => {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: error.message,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        });
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Captcha is not correct",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+    console.log(data.captcha);
+  };
+  const googleSignUp = () => {
+    googleLogin()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User register successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
 
   return (
     <section className="min-h-screen flex items-stretch text-white">
@@ -116,10 +161,17 @@ const Register = () => {
                   name="name"
                   className="w-full bg-gray-800 text-white text-base py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline border-2 border-gray-700 focus:border-blue-500 transition-colors"
                   placeholder="Enter your name"
-                  {...register("name", { required: "Name is required", maxLength: { value: 20, message: "Name must be at most 20 characters" } })}
-                  
+                  {...register("name", {
+                    required: "Name is required",
+                    maxLength: {
+                      value: 20,
+                      message: "Name must be at most 20 characters",
+                    },
+                  })}
                 />
-                {errors.name && <p className="text-red-700 text-xl">{errors.name.message}</p>}
+                {errors.name && (
+                  <p className="text-red-700 text-xl">{errors.name.message}</p>
+                )}
               </div>
               <div className="mb-2 text-left">
                 <label
@@ -142,7 +194,9 @@ const Register = () => {
                     },
                   })}
                 />
-                {errors.email && <p className="text-xl text-red-700">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="text-xl text-red-700">{errors.email.message}</p>
+                )}
               </div>
               <div className="mb-2 text-left">
                 <label
@@ -164,13 +218,18 @@ const Register = () => {
                       message: "Password must be at least 8 characters long",
                     },
                     pattern: {
-                      value: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~]).*$/,
-                      message: "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character",
+                      value:
+                        /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?~]).*$/,
+                      message:
+                        "Password must include at least one uppercase letter, one lowercase letter, one number, and one special character",
                     },
                   })}
                 />
-                {errors.password && <p className="text-xl text-red-700">{errors.password.message}</p>}
-
+                {errors.password && (
+                  <p className="text-xl text-red-700">
+                    {errors.password.message}
+                  </p>
+                )}
               </div>
               <div className="mb-2 text-left">
                 <label
@@ -201,9 +260,12 @@ const Register = () => {
                 or
               </div>
               <div className="mt-4">
-                <a href="#" className="text-blue-500 text-sm font-semibold">
+                <button
+                  onClick={googleSignUp}
+                  className="text-blue-500 text-sm font-semibold"
+                >
                   Sign up with Google
-                </a>
+                </button>
               </div>
             </div>
             <div className="mt-4">
