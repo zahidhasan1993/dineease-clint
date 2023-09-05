@@ -8,6 +8,8 @@ import Contact from "../components/about/Contact";
 import Shop from "../Shop/Shop";
 import Register from "../authentication/Register";
 import Login from "../authentication/Login";
+import Secret from "../Secret";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -37,12 +39,20 @@ export const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Register></Register>
+        element: <Register></Register>,
       },
       {
         path: "/login",
-        element: <Login></Login>
-      }
+        element: <Login></Login>,
+      },
+      {
+        path: "/secret",
+        element: (
+          <PrivateRoute>
+            <Secret></Secret>
+          </PrivateRoute>
+        ),
+      },
     ],
   },
 ]);

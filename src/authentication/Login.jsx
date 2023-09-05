@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../assets/login/login.jpg";
 import { useForm } from "react-hook-form";
 import {
@@ -17,6 +17,9 @@ const Login = () => {
   }, []);
   useTitle("DineEase | Login");
   const { signInWithEmail, googleLogin } = useContext(DataProvider);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const {
     register,
@@ -36,6 +39,7 @@ const Login = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate(from, { replace: true });
         })
         .catch((error) => {
           Swal.fire({
@@ -67,6 +71,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         Swal.fire({
