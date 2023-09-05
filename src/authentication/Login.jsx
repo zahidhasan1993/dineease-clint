@@ -6,16 +6,18 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { useEffect } from "react";
-import Swal from 'sweetalert2';
+import { useContext, useEffect } from "react";
+import Swal from "sweetalert2";
 import useTitle from "../customhooks/useTitle";
-
+import { DataProvider } from "../providers/AuthProvider";
 
 const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
   useTitle("DineEase | Login");
+  const { signInWithEmail, googleLogin } = useContext(DataProvider);
+
   const {
     register,
     handleSubmit,
@@ -23,27 +25,58 @@ const Login = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    
     const captcha = data.captcha;
-    if(validateCaptcha(captcha)){
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Captcha is correct',
+    if (validateCaptcha(captcha)) {
+      signInWithEmail(data.email, data.password)
+        .then(() => {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User Sign In Successful",
             showConfirmButton: false,
-            timer: 1500
-          })
-    }
-    else{
-        Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            title: 'Captcha is not correct',
+            timer: 1500,
+          });
+        })
+        .catch((error) => {
+          Swal.fire({
+            position: "top-end",
+            icon: "error",
+            title: error.message,
             showConfirmButton: false,
-            timer: 1500
-          })
+            timer: 1500,
+          });
+        });
+    } else {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Captcha is not correct",
+        showConfirmButton: false,
+        timer: 1500,
+      });
     }
-    console.log(data.captcha);
+    // console.log(data.captcha);
+  };
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then(() => {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Sign In Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: error.message,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
   return (
     <section className="min-h-screen flex items-stretch text-white">
@@ -191,9 +224,9 @@ const Login = () => {
                 or
               </div>
               <div className="mt-4">
-                <a href="#" className="text-blue-500 text-sm font-semibold">
+                <button onClick={handleGoogleLogin} className="text-blue-500 text-sm font-semibold">
                   Sign in with Google
-                </a>
+                </button>
               </div>
             </div>
             <div className="mt-4">

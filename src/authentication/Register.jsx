@@ -31,7 +31,7 @@ const Register = () => {
     if (validateCaptcha(captcha)) {
       emailLogin(data.email, data.password)
         .then(() => {
-          updateUser()
+          updateUser(data.name)
             .then(() => {
               Swal.fire({
                 position: "top-end",

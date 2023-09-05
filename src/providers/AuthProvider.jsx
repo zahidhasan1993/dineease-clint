@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithPopup, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../../firebase.config";
 
 export const DataProvider = createContext();
@@ -36,12 +36,23 @@ const AuthProvider = ({children}) => {
             photoURL: ""
         })
     }
+    const signInWithEmail = (email,password) => {
+        setLoader(true);
+        return signInWithEmailAndPassword(auth,email,password);
+    }
+
+    const logOut = () => {
+        setLoader(true);
+        return signOut(auth);
+    }
     const infoData = {
         user,
         loader,
         emailLogin,
         googleLogin,
-        updateUser
+        updateUser,
+        signInWithEmail,
+        logOut
     }
     return (
         <DataProvider.Provider value={infoData}>
