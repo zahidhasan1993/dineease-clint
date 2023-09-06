@@ -15,6 +15,9 @@ const Login = () => {
   useEffect(() => {
     loadCaptchaEnginge(6);
   }, []);
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[])
   useTitle("DineEase | Login");
   const { signInWithEmail, googleLogin } = useContext(DataProvider);
   const navigate = useNavigate();

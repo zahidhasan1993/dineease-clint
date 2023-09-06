@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 
 const useMenu = () => {
-    const [menu,setMenu] = useState([]);
+  const [menu, setMenu] = useState([]);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/menu')
-        .then(res => res.json())
-        .then(data => setMenu(data))
-    },[])
+  useEffect(() => {
+    fetch("http://localhost:5000/menu")
+      .then((res) => res.json())
+      .then((data) => setMenu(data));
+  }, []);
 
-    return menu
-}
+  return menu;
+};
 
 export default useMenu;

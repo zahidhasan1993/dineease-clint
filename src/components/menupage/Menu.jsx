@@ -29,7 +29,7 @@ const Menu = () => {
     .filter((data) => data.category === "salad")
     .slice(0, 6);
   const offers = menuData.filter(data => data.category === "offered").slice(0,6);
-  //   console.log(desserts);
+    // console.log(desserts);
   return (
     <div>
       <div className="text-center mb-10">

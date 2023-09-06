@@ -1,4 +1,56 @@
+import { useContext } from "react";
+import { DataProvider } from "../providers/AuthProvider";
+import Swal from "sweetalert2";
+import { useLocation, useNavigate } from "react-router-dom";
+
 const ShopCard = ({ item }) => {
+  const {name,_id,image,price} = item;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const {user} = useContext(DataProvider);
+  const handleAddToCart = () => {
+    if (user && user.email) {
+      const data = {
+        itemId : _id,
+        name,
+        image,
+        price,
+        userEmail : user.email
+      }
+
+      fetch('http://localhost:5000/carts',{
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data.insertedId) {
+          Swal.fire({
+            icon: 'success',
+            text: 'Added to cart',
+          })
+        }
+      })
+
+    }
+    else{
+      Swal.fire({
+        title: 'Please login to order',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Login!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login', {state: {from: location}})
+        }
+      })
+    }
+  }
   return (
     <div className="mb-4 p-0 sm:p-4 md:w-full">
       {" "}
@@ -21,13 +73,13 @@ const ShopCard = ({ item }) => {
           <p className="line-clamp-6 mb-3 overflow-hidden leading-relaxed text-gray-500 cursor-pointer">
             {item.recipe}
           </p>
-          <p className="line-clamp-6 mb-3 overflow-hidden leading-relaxed text-red-700 cursor-pointer">
+          <p className="line-clamp-6 mb-3 overflow-hidden leading-relaxed text-red-700 cursor-pointer font-bold">
                Price: ${item.price}
           </p>
         </div>
 
         <div className="pt-1 pb-4 px-6">
-          <button className="py-3 px-5 text-white font-semibold rounded bg-red-500 hover:scale-110 duration-300 ease-in-out">
+          <button onClick={handleAddToCart} className="py-3 px-5 text-white font-semibold rounded bg-red-500 hover:scale-110 duration-300 ease-in-out">
             Add to cart
           </button>
         </div>

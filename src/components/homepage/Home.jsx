@@ -42,7 +42,7 @@ const Home = () => {
       <div className="mb-20">
         <FromOurMenu></FromOurMenu>
       </div>
-      <SectionTitle title="What clink Says"></SectionTitle>
+      <SectionTitle title="What clints Says"></SectionTitle>
       <ClintReview></ClintReview>
     </div>
   );
