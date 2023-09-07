@@ -22,7 +22,7 @@ const Shop = () => {
   const initialIndex = categories.indexOf(category)
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
   
-  console.log(category);
+  // console.log(category);
   const menu = useMenu();
   const pizzas = menu.filter((item) => item.category === "pizza");
   const desserts = menu.filter((item) => item.category === "dessert");

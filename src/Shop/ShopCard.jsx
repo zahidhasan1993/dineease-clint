@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { DataProvider } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import useCart from "../customhooks/useCart";
 
 const ShopCard = ({ item }) => {
   const {name,_id,image,price} = item;
   const navigate = useNavigate();
   const location = useLocation();
   const {user} = useContext(DataProvider);
+  const {refetch} = useCart();
   const handleAddToCart = () => {
     if (user && user.email) {
       const data = {
@@ -32,6 +34,7 @@ const ShopCard = ({ item }) => {
             icon: 'success',
             text: 'Added to cart',
           })
+          refetch();
         }
       })
 

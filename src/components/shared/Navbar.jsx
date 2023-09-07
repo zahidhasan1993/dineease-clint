@@ -2,13 +2,15 @@ import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { DataProvider } from "../../providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
+import useCart from "../../customhooks/useCart";
+
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const { user, logOut } = useContext(DataProvider);
-
-
+  const {cart} = useCart();
+  console.log(cart);
   const handleMouseHover = () => {
     setIsHover(!isHover);
   };
@@ -60,7 +62,7 @@ const Navbar = () => {
             <div className="flex gap-5 justify-center items-center">
               <div className="flex gap-1">
                 <FaShoppingCart className="text-2xl"></FaShoppingCart>
-                <sub className="font-semibold">0</sub>
+                <sub className="font-semibold text-[15px]">{cart.length || 0}</sub>
               </div>
               {isHover && <p className="font-semibold ">{user.displayName}</p>}
               <svg
@@ -128,8 +130,8 @@ const Navbar = () => {
                 className="flex gap-5 justify-center items-center"
               >
                 <div className="flex gap-1">
-                <FaShoppingCart className="text-2xl"></FaShoppingCart>
-                <sub className="font-semibold">0</sub>
+                  <FaShoppingCart className="text-2xl"></FaShoppingCart>
+                  <sub className="font-semibold">{cart.length || 0}</sub>
                 </div>
 
                 {isHover && (
