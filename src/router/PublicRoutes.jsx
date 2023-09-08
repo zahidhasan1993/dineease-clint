@@ -9,7 +9,10 @@ import Register from "../authentication/Register";
 import Login from "../authentication/Login";
 import PrivateRoute from "./PrivateRoute";
 import Shop from "../components/Shop/Shop";
-import Dashboard from "../components/dashboard/Dashboard";
+import Dashboard from "../layouts/Dashboard";
+import AdminHome from "../components/dashboard/AdminHome";
+import ManageItems from "../components/dashboard/ManageItems";
+
 
 export const router = createBrowserRouter([
   {
@@ -54,5 +57,15 @@ export const router = createBrowserRouter([
         <Dashboard></Dashboard>
       </PrivateRoute>
     ),
+    children: [
+      {
+        path: 'adminhome',
+        element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>
+      },
+      {
+        path: 'manageitems',
+        element: <ManageItems></ManageItems>
+      }
+    ]
   },
 ]);

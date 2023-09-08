@@ -9,7 +9,7 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { PiForkKnifeBold } from "react-icons/pi";
-import { Link } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   const [isSidebarHidden, setSidebarHidden] = useState(true);
@@ -48,46 +48,66 @@ const Dashboard = () => {
         {/* Sidebar Items */}
         <div className="p-4 space-y-4">
           {/* Home Link */}
-          <a
-            href="#"
+          <NavLink
+            to="adminhome"
             aria-label="dashboard"
-            className="relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+            className={({ isActive }) =>
+                      isActive
+                        ? "relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+                    }
           >
             <FaHome></FaHome>
             <span className="-mr-1 font-medium">Admin Home</span>
-          </a>
+          </NavLink>
           {/* Rewards Link */}
-          <a
-            href="#"
-            className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+          <NavLink
+            to="additems"
+            className={({ isActive }) =>
+                      isActive
+                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+                    }
           >
             <PiForkKnifeBold></PiForkKnifeBold>
             <span>Add Items</span>
-          </a>
+          </NavLink>
           {/* Branches Link */}
-          <a
-            href="#"
-            className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+          <NavLink
+            to="manageitems"
+            className={({ isActive }) =>
+                      isActive
+                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+                    }
           >
             <FaList></FaList>
             <span>Manage Items</span>
-          </a>
+          </NavLink>
           {/* Wallet Link */}
-          <a
-            href="#"
-            className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+          <NavLink
+            to='managebookings'
+            className={({ isActive }) =>
+                      isActive
+                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+                    }
           >
             <FaBook></FaBook>
             <span>Manage Bookings</span>
-          </a>
+          </NavLink>
           {/* Transactions Link */}
-          <a
-            href="#"
-            className="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+          <NavLink
+            to="allusers"
+            className={({ isActive }) =>
+                      isActive
+                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+                    }
           >
             <FaUsers></FaUsers>
             <span>All Users</span>
-          </a>
+          </NavLink>
           <hr />
           <Link
             to="/"
@@ -123,8 +143,7 @@ const Dashboard = () => {
       {/* Main Container */}
       <div className="lg:w-full lg:ml-44 lg:mr-10 px-6 py-8">
         
-
-        
+        <Outlet></Outlet>
         
       </div>
     </div>
