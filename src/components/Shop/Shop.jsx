@@ -1,12 +1,12 @@
-import img from "../assets/moreimage/masimo-grabar-NzHRSLhc6Cs-unsplash.jpg";
-import SectionCover from "../components/shared/SectionCover";
+import img from "../../assets/moreimage/masimo-grabar-NzHRSLhc6Cs-unsplash.jpg";
+import SectionCover from "../shared/SectionCover";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import useMenu from "../customhooks/useMenu";
+import useMenu from "../../customhooks/useMenu";
 import ShopCard from "./ShopCard";
-import "../Shop/style.css";
+import "./style.css";
 import { useEffect, useState } from "react";
-import useTitle from "../customhooks/useTitle";
+import useTitle from "../../customhooks/useTitle";
 import { useParams } from "react-router-dom";
 
 const Shop = () => {

@@ -4,12 +4,11 @@ import { DataProvider } from "../../providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../customhooks/useCart";
 
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const { user, logOut } = useContext(DataProvider);
-  const {cart} = useCart();
+  const { cart } = useCart();
   console.log(cart);
   const handleMouseHover = () => {
     setIsHover(!isHover);
@@ -38,6 +37,13 @@ const Navbar = () => {
       <NavLink to="/contact" className="mr-8 hover:text-gray-300">
         Contact
       </NavLink>
+      {user ? (
+        <NavLink to="/dashboard" className="mr-8 hover:text-gray-300">
+          Dashboard
+        </NavLink>
+      ) : (
+        <></>
+      )}
     </>
   );
   // console.log(user);
@@ -62,7 +68,9 @@ const Navbar = () => {
             <div className="flex gap-5 justify-center items-center">
               <div className="flex gap-1">
                 <FaShoppingCart className="text-2xl"></FaShoppingCart>
-                <sub className="font-semibold text-[15px]">{cart.length || 0}</sub>
+                <sub className="font-semibold text-[15px]">
+                  {cart.length || 0}
+                </sub>
               </div>
               {isHover && <p className="font-semibold ">{user.displayName}</p>}
               <svg

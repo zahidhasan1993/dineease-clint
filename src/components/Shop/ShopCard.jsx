@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { DataProvider } from "../providers/AuthProvider";
+import { DataProvider } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
-import useCart from "../customhooks/useCart";
+import useCart from "../../customhooks/useCart";
 
 const ShopCard = ({ item }) => {
   const {name,_id,image,price} = item;

@@ -5,11 +5,11 @@ import Home from "../components/homepage/Home";
 import Menu from "../components/menupage/Menu";
 import About from "../components/about/About";
 import Contact from "../components/about/Contact";
-import Shop from "../Shop/Shop";
 import Register from "../authentication/Register";
 import Login from "../authentication/Login";
-import Secret from "../Secret";
 import PrivateRoute from "./PrivateRoute";
+import Shop from "../components/Shop/Shop";
+import Dashboard from "../components/dashboard/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -45,14 +45,14 @@ export const router = createBrowserRouter([
         path: "/login",
         element: <Login></Login>,
       },
-      {
-        path: "/secret",
-        element: (
-          <PrivateRoute>
-            <Secret></Secret>
-          </PrivateRoute>
-        ),
-      },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard></Dashboard>
+      </PrivateRoute>
+    ),
   },
 ]);
