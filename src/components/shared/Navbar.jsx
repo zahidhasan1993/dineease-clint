@@ -67,7 +67,9 @@ const Navbar = () => {
           {user ? (
             <div className="flex gap-5 justify-center items-center">
               <div className="flex gap-1">
-                <FaShoppingCart className="text-2xl"></FaShoppingCart>
+                <Link to='dashboard/mycart'>
+                  <FaShoppingCart className="text-2xl"></FaShoppingCart>
+                </Link>
                 <sub className="font-semibold text-[15px]">
                   {cart.length || 0}
                 </sub>

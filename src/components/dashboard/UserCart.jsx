@@ -1,11 +1,38 @@
+import Swal from "sweetalert2";
 import useCart from "../../customhooks/useCart";
 
 const UserCart = () => {
-  const { cart } = useCart();
+  const { cart, refetch } = useCart();
   const totalPrice = cart.reduce(
     (a, currentValue) => a + currentValue.price,
     0
   );
+  const newTotalPrice = parseFloat(totalPrice).toFixed(2);
+
+  const handleDelete = (item) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/carts/${item._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Item is removed!!!", "success");
+              refetch();
+            }
+          });
+      }
+    });
+  };
   // console.log(totalPrice);
   return (
     <div>
@@ -13,7 +40,7 @@ const UserCart = () => {
         <h1 className="text-4xl font-medium mb-5 md:mb-0">
           Total Item : {cart.length}
         </h1>
-        <h1 className="text-4xl font-medium">Total price : ${totalPrice}</h1>
+        <h1 className="text-4xl font-medium">Total price : ${newTotalPrice}</h1>
         <button className="py-3 px-7 mt-5 md:mt-0 text-white font-bold bg-red-700 rounded-lg hover:bg-red-500 hover:scale-125 duration-300">
           Pay
         </button>
@@ -29,7 +56,7 @@ const UserCart = () => {
                   className="py-3 px-4 text-sm font-medium uppercase tracking-wide"
                   scope="col"
                 >
-                 Item Image
+                  Item Image
                 </th>
                 {/* ::Job Title */}
                 <th
@@ -45,7 +72,7 @@ const UserCart = () => {
                 >
                   Price
                 </th>
-               
+
                 {/* ::Actions */}
                 <th
                   className="py-3 px-4 text-center text-sm font-medium uppercase tracking-wide"
@@ -67,7 +94,7 @@ const UserCart = () => {
                 >
                   {/* ::User Name */}
                   <td className="py-3 px-4 text-base text-gray-700 font-semibold">
-                    <img src={item.image} alt="food image" className="h-20"/>
+                    <img src={item.image} alt="food image" className="h-20" />
                   </td>
                   {/* ::User Job Title */}
                   <td className="py-3 px-4 text-base text-gray-500 font-medium">
@@ -77,12 +104,12 @@ const UserCart = () => {
                   <td className="py-3 px-4 text-base text-gray-500 font-medium">
                     ${item.price}
                   </td>
-                  
+
                   {/* ::Action Buttons */}
                   <td className="py-3 px-4 text-base text-gray-700 text-center font-medium">
                     {/* :::delete button */}
                     <button
-                      type="button"
+                      onClick={() => handleDelete(item)}
                       className="text-sm text-red-500 font-semibold hover:text-red-600"
                     >
                       Delete
