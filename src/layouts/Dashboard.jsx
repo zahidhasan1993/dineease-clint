@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   FaBars,
   FaBook,
@@ -6,13 +6,16 @@ import {
   FaList,
   FaMailBulk,
   FaShoppingBag,
+  FaShoppingBasket,
   FaUsers,
 } from "react-icons/fa";
 import { PiForkKnifeBold } from "react-icons/pi";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { DataProvider } from "../providers/AuthProvider";
 
 const Dashboard = () => {
   const [isSidebarHidden, setSidebarHidden] = useState(true);
+  const { user } = useContext(DataProvider);
 
   const toggleSidebar = () => {
     setSidebarHidden(!isSidebarHidden);
@@ -47,67 +50,131 @@ const Dashboard = () => {
       >
         {/* Sidebar Items */}
         <div className="p-4 space-y-4">
-          {/* Home Link */}
-          <NavLink
-            to="adminhome"
-            aria-label="dashboard"
-            className={({ isActive }) =>
-                      isActive
-                        ? "relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
-                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
-                    }
-          >
-            <FaHome></FaHome>
-            <span className="-mr-1 font-medium">Admin Home</span>
-          </NavLink>
-          {/* Rewards Link */}
-          <NavLink
-            to="additems"
-            className={({ isActive }) =>
-                      isActive
-                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
-                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
-                    }
-          >
-            <PiForkKnifeBold></PiForkKnifeBold>
-            <span>Add Items</span>
-          </NavLink>
-          {/* Branches Link */}
-          <NavLink
-            to="manageitems"
-            className={({ isActive }) =>
-                      isActive
-                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
-                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
-                    }
-          >
-            <FaList></FaList>
-            <span>Manage Items</span>
-          </NavLink>
-          {/* Wallet Link */}
-          <NavLink
-            to='managebookings'
-            className={({ isActive }) =>
-                      isActive
-                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
-                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
-                    }
-          >
-            <FaBook></FaBook>
-            <span>Manage Bookings</span>
-          </NavLink>
-          {/* Transactions Link */}
-          <NavLink
-            to="allusers"
-            className={({ isActive }) =>
-                      isActive
-                        ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
-                        : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
-                    }
-          >
-            <FaUsers></FaUsers>
-            <span>All Users</span>
-          </NavLink>
+          {/* <>
+            <NavLink
+              to="adminhome"
+              aria-label="dashboard"
+              className={({ isActive }) =>
+                isActive
+                  ? "relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaHome></FaHome>
+              <span className="-mr-1 font-medium">Admin Home</span>
+            </NavLink>
+
+            <NavLink
+              to="additems"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <PiForkKnifeBold></PiForkKnifeBold>
+              <span>Add Items</span>
+            </NavLink>
+
+            <NavLink
+              to="manageitems"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaList></FaList>
+              <span>Manage Items</span>
+            </NavLink>
+
+            <NavLink
+              to="managebookings"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaBook></FaBook>
+              <span>Manage Bookings</span>
+            </NavLink>
+
+            <NavLink
+              to="allusers"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaUsers></FaUsers>
+              <span>All Users</span>
+            </NavLink>
+          </> */}
+          <>
+            <NavLink
+              to="userhome"
+              aria-label="dashboard"
+              className={({ isActive }) =>
+                isActive
+                  ? "relative px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaHome></FaHome>
+              <span className="-mr-1 font-medium">User Home</span>
+            </NavLink>
+
+            <NavLink
+              to="reservation"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <PiForkKnifeBold></PiForkKnifeBold>
+              <span>Reservation</span>
+            </NavLink>
+
+            <NavLink
+              to="mycart"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaShoppingBag></FaShoppingBag>
+              <span>My Cart</span>
+            </NavLink>
+
+            <NavLink
+              to="addreview"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaBook></FaBook>
+              <span>Add Review</span>
+            </NavLink>
+
+            <NavLink
+              to="mybooking"
+              className={({ isActive }) =>
+                isActive
+                  ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
+                  : "px-4 py-3 flex items-center space-x-4 rounded-md text-gray-500 group"
+              }
+            >
+              <FaShoppingBasket></FaShoppingBasket>
+              <span>My Booking</span>
+            </NavLink>
+          </>
+
           <hr />
           <Link
             to="/"
@@ -142,9 +209,7 @@ const Dashboard = () => {
       </div>
       {/* Main Container */}
       <div className="lg:w-full lg:ml-44 lg:mr-10 px-6 py-8">
-        
         <Outlet></Outlet>
-        
       </div>
     </div>
   );
