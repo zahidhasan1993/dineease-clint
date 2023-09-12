@@ -12,10 +12,12 @@ import {
 import { PiForkKnifeBold } from "react-icons/pi";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
+import useCart from "../customhooks/useCart";
 
 const Dashboard = () => {
   const [isSidebarHidden, setSidebarHidden] = useState(true);
   const { user } = useContext(DataProvider);
+  const {cart} = useCart();
 
   const toggleSidebar = () => {
     setSidebarHidden(!isSidebarHidden);
@@ -147,7 +149,7 @@ const Dashboard = () => {
               }
             >
               <FaShoppingBag></FaShoppingBag>
-              <span>My Cart</span>
+              <span>My Cart <sup className="text-[15px] font-bold">{cart.length}</sup></span>
             </NavLink>
 
             <NavLink
