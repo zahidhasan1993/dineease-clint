@@ -12,6 +12,9 @@ import Shop from "../components/Shop/Shop";
 import Dashboard from "../layouts/Dashboard";
 import AdminHome from "../components/dashboard/AdminHome";
 import ManageItems from "../components/dashboard/ManageItems";
+import UserHome from "../components/dashboard/UserHome";
+import UserReservation from "../components/dashboard/UserReservation";
+import UserCart from "../components/dashboard/UserCart";
 
 
 export const router = createBrowserRouter([
@@ -65,6 +68,20 @@ export const router = createBrowserRouter([
       {
         path: 'manageitems',
         element: <ManageItems></ManageItems>
+      },
+
+      //user dashboard routes
+      {
+        path: 'userhome',
+        element: <UserHome></UserHome>
+      },
+      {
+        path: 'reservation',
+        element: <UserReservation></UserReservation>
+      },
+      {
+        path: 'mycart',
+        element: <UserCart></UserCart>
       }
     ]
   },
