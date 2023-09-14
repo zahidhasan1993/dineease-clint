@@ -58,14 +58,13 @@ const Register = () => {
                       showConfirmButton: false,
                       timer: 1500,
                     });
+                    reset();
                   }
                 });
             })
             .catch((error) => {
               console.log(error.message);
             });
-
-          reset();
         })
         .catch((error) => {
           Swal.fire({
@@ -89,14 +88,33 @@ const Register = () => {
   };
   const googleSignUp = () => {
     googleLogin()
-      .then(() => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "User register successful",
-          showConfirmButton: false,
-          timer: 1500,
-        });
+      .then((result) => {
+        // console.log(result.user);
+        const user = result.user;
+        const currentUser = {
+          name: user.displayName,
+          email: user.email,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.acknowledged) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User register successful",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
       })
       .catch((error) => {
         Swal.fire({

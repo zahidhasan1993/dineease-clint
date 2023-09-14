@@ -16,8 +16,8 @@ const Login = () => {
     loadCaptchaEnginge(6);
   }, []);
   useEffect(() => {
-    window.scrollTo(0,0);
-  },[])
+    window.scrollTo(0, 0);
+  }, []);
   useTitle("DineEase | Login");
   const { signInWithEmail, googleLogin } = useContext(DataProvider);
   const navigate = useNavigate();
@@ -66,15 +66,33 @@ const Login = () => {
   };
   const handleGoogleLogin = () => {
     googleLogin()
-      .then(() => {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "User Sign In Successful",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate(from, { replace: true });
+      .then((result) => {
+        // console.log(result.user);
+        const user = result.user;
+        const currentUser = {
+          name: user.displayName,
+          email: user.email,
+        };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(currentUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.acknowledged) {
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Login successful",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
+          });
       })
       .catch((error) => {
         Swal.fire({
@@ -232,7 +250,10 @@ const Login = () => {
                 or
               </div>
               <div className="mt-4">
-                <button onClick={handleGoogleLogin} className="text-blue-500 text-sm font-semibold">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="text-blue-500 text-sm font-semibold"
+                >
                   Sign in with Google
                 </button>
               </div>
