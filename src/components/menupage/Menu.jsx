@@ -39,7 +39,7 @@ const Menu = () => {
             <FoodItems key={of._id} item={of}></FoodItems>
           ))}
         </div>
-        <Link to='/shop/pizza' className="mt-5 mb-10 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105">
+        <Link to='/shop/offer' className="mt-5 mb-10 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105">
           Order Your Food Now
         </Link>
       </div>

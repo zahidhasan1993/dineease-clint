@@ -13,9 +13,9 @@ import useTitle from "../customhooks/useTitle";
 
 const Register = () => {
   useTitle("DineEase | register");
-  useEffect(()=> {
-    window.scrollTo(0,0);
-  },[])
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { emailLogin, googleLogin, updateUser } = useContext(DataProvider);
 
   const {
@@ -31,18 +31,35 @@ const Register = () => {
 
   const onSubmit = (data) => {
     const captcha = data.captcha;
+    const userData = {
+      name: data.name,
+      email: data.email,
+    };
     if (validateCaptcha(captcha)) {
       emailLogin(data.email, data.password)
         .then(() => {
           updateUser(data.name)
             .then(() => {
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "User register successful",
-                showConfirmButton: false,
-                timer: 1500,
-              });
+              fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: {
+                  "Content-type": "application/json; charset=UTF-8",
+                },
+                body: JSON.stringify(userData),
+              })
+                .then((res) => res.json())
+                .then((data) => {
+                  console.log(data);
+                  if (data.insertedId) {
+                    Swal.fire({
+                      position: "top-end",
+                      icon: "success",
+                      title: "User register successful",
+                      showConfirmButton: false,
+                      timer: 1500,
+                    });
+                  }
+                });
             })
             .catch((error) => {
               console.log(error.message);

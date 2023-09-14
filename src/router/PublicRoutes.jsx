@@ -63,7 +63,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: 'adminhome',
-        element: <PrivateRoute><AdminHome></AdminHome></PrivateRoute>
+        element: <AdminHome></AdminHome>
       },
       {
         path: 'manageitems',

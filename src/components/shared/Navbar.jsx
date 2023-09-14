@@ -9,7 +9,7 @@ const Navbar = () => {
   const [isHover, setIsHover] = useState(false);
   const { user, logOut } = useContext(DataProvider);
   const { cart } = useCart();
-  console.log(cart);
+  // console.log(cart);
   const handleMouseHover = () => {
     setIsHover(!isHover);
   };

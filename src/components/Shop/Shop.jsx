@@ -17,7 +17,7 @@ const Shop = () => {
   }, []);
 
   
-  const categories = ["pizza","salad","drinks","dessert","soup"];
+  const categories = ["pizza","salad","drinks","dessert","soup","offer"];
   const {category} = useParams();
   const initialIndex = categories.indexOf(category)
   const [currentIndex, setCurrentIndex] = useState(initialIndex)
@@ -29,8 +29,9 @@ const Shop = () => {
   const salads = menu.filter((item) => item.category === "salad");
   const drinks = menu.filter((item) => item.category === "drinks");
   const soups = menu.filter((item) => item.category === "soup");
+  const offers = menu.filter((item) => item.category === "offered")
 
-//   console.log(pizzas);
+  console.log(offers);
   return (
     <div>
       <SectionCover img={img} name="Order From Here"></SectionCover>
@@ -41,6 +42,7 @@ const Shop = () => {
           <Tab id="drinksTab">Drinks</Tab>
           <Tab id="dessertTab">Dessert</Tab>
           <Tab id="soupTab">Soup</Tab>
+          <Tab id="offeredTab">Offer</Tab>
         </TabList>
 
         <TabPanel className="mt-20">
@@ -75,6 +77,13 @@ const Shop = () => {
           <div className="md:grid md:grid-cols-3">
             {soups.map((soup) => (
               <ShopCard key={soup._id} item={soup}></ShopCard>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel className="mt-20">
+          <div className="md:grid md:grid-cols-3">
+            {offers.map((offer) => (
+              <ShopCard key={offer._id} item={offer}></ShopCard>
             ))}
           </div>
         </TabPanel>
