@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import img from "../assets/login/register.jpg";
 import { useForm } from "react-hook-form";
 import {
@@ -16,6 +16,10 @@ const Register = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const { emailLogin, googleLogin, updateUser } = useContext(DataProvider);
 
   const {
@@ -59,6 +63,7 @@ const Register = () => {
                       timer: 1500,
                     });
                     reset();
+                    navigate(from, { replace: true });
                   }
                 });
             })
@@ -113,6 +118,7 @@ const Register = () => {
                 showConfirmButton: false,
                 timer: 1500,
               });
+              navigate(from, { replace: true });
             }
           });
       })

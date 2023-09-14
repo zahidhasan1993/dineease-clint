@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { DataProvider } from "../../providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../customhooks/useCart";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,15 @@ const Navbar = () => {
   };
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'User Logged Out Successful!',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
       .catch((error) => {
         console.log(error);
       });
