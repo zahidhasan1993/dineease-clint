@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   FaBars,
   FaBook,
@@ -13,8 +13,12 @@ import { PiForkKnifeBold } from "react-icons/pi";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { DataProvider } from "../providers/AuthProvider";
 import useCart from "../customhooks/useCart";
+import useTitle from "../customhooks/useTitle";
 
 const Dashboard = () => {
+  useEffect(() => {
+    window.scrollTo(0,0);
+  },[])
   const [isSidebarHidden, setSidebarHidden] = useState(true);
   const { user } = useContext(DataProvider);
   const {cart} = useCart();
@@ -22,6 +26,7 @@ const Dashboard = () => {
   const toggleSidebar = () => {
     setSidebarHidden(!isSidebarHidden);
   };
+  useTitle('DineEase | DashBoard');
   return (
     <div className="bg-gray-200 md:min-h-screen lg:flex md:mt-5">
       <nav className="bg-white border-b border-gray-300">

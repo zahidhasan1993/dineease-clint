@@ -1,12 +1,15 @@
 import Swal from "sweetalert2";
 import useCart from "../../customhooks/useCart";
+import useTitle from "../../customhooks/useTitle";
 
 const UserCart = () => {
+  useTitle("Dashboard | Cart")
   const { cart, refetch } = useCart();
   const totalPrice = cart.reduce(
     (a, currentValue) => a + currentValue.price,
     0
   );
+
   const newTotalPrice = parseFloat(totalPrice).toFixed(2);
 
   const handleDelete = (item) => {

@@ -81,8 +81,8 @@ const Login = () => {
           body: JSON.stringify(currentUser),
         })
           .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
+          .then(() => {
+            // console.log(data);
             Swal.fire({
               position: "top-end",
               icon: "success",
@@ -90,9 +90,8 @@ const Login = () => {
               showConfirmButton: false,
               timer: 1500,
             });
-
-            navigate(from, { replace: true });
           });
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         Swal.fire({
