@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import img1 from "../../assets/chefrecomend/bruna-branco-t8hTmte4O_g-unsplash.jpg";
 import img2 from "../../assets/chefrecomend/cala-w6ftFbPCs9I-unsplash.jpg";
 import img3 from "../../assets/chefrecomend/saundarya-srinivasan-60nzTP7_hMQ-unsplash.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ChefRecommends = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const foods = [
     {
       name: "American Pizza",
@@ -32,7 +38,7 @@ const ChefRecommends = () => {
   return (
     <div className="md:grid md:grid-cols-3">
       {foods.map((food) => (
-        <div key={food.id} className="mb-4 p-0 sm:p-4 md:w-full">
+        <div key={food.id} className="mb-4 p-0 sm:p-4 md:w-full" data-aos="zoom-in" data-aos-duration="2000">
           {" "}
           <div className="group h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-lg">
             <img

@@ -26,12 +26,16 @@ const ClintReview = () => {
         <SwiperSlide key={review._id}>
           <div className="bg-white h-full flex items-center justify-center">
             <div className="text-center p-5">
-              <div className="text-5xl md:text-9xl text-blue-300 leading-7">”</div>
-              <div className="font-medium text-gray-600 max-w-xl text-lg md:text-3xl">
+              <div className="text-5xl md:text-9xl text-blue-300 leading-7">
+                ”
+              </div>
+              <div className="font-medium text-gray-600 max-w-xl text-base md:text-xl">
                 {review.details}
               </div>
               <div className="mt-5">
-                <span className="font-bold text-sm md:text-xl">{review.name}</span>
+                <span className="font-bold text-sm md:text-xl">
+                  {review.name}
+                </span>
                 <span className="mx-3">--------</span>
                 <Rating
                   initialRating={review.rating}
