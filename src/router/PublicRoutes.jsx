@@ -15,6 +15,7 @@ import ManageItems from "../components/dashboard/ManageItems";
 import UserHome from "../components/dashboard/UserHome";
 import UserReservation from "../components/dashboard/UserReservation";
 import UserCart from "../components/dashboard/UserCart";
+import AllUser from "../components/dashboard/AllUser";
 
 
 export const router = createBrowserRouter([
@@ -61,6 +62,7 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      //admin dashboard routes
       {
         path: 'adminhome',
         element: <AdminHome></AdminHome>
@@ -68,6 +70,10 @@ export const router = createBrowserRouter([
       {
         path: 'manageitems',
         element: <ManageItems></ManageItems>
+      },
+      {
+        path: 'alluser',
+        element: <AllUser></AllUser>
       },
 
       //user dashboard routes

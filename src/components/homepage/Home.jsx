@@ -25,16 +25,13 @@ const Home = () => {
   return (
     <div>
       <Banner></Banner>
-
-      <div className="my-20" data-aos="fade-up" data-aos-duration="1500">
+      <div className="mt-32 mb-20" data-aos="fade-in" data-aos-duration="1500">
         <Services></Services>
       </div>
-
-      <div className="mb-20" data-aos="fade-down" data-aos-duration="1500">
+      <div className="mb-20" data-aos="fade-out" data-aos-duration="1500">
         <SectionTitle title="Our Popular Menu"></SectionTitle>
         <PopularMenu></PopularMenu>
       </div>
-
       <div className="mb-20" data-aos="fade-right" data-aos-duration="1500">
         <SectionTitle title="Featured This Week"></SectionTitle>
         <FeaturedItem></FeaturedItem>

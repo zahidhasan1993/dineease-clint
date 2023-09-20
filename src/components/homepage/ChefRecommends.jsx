@@ -4,6 +4,7 @@ import img2 from "../../assets/chefrecomend/cala-w6ftFbPCs9I-unsplash.jpg";
 import img3 from "../../assets/chefrecomend/saundarya-srinivasan-60nzTP7_hMQ-unsplash.jpg";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const ChefRecommends = () => {
   useEffect(() => {
@@ -38,13 +39,18 @@ const ChefRecommends = () => {
   return (
     <div className="md:grid md:grid-cols-3">
       {foods.map((food) => (
-        <div key={food.id} className="mb-4 p-0 sm:p-4 md:w-full" data-aos="zoom-in" data-aos-duration="2000">
+        <div
+          key={food.id}
+          className="mb-4 p-0 sm:p-4 md:w-full"
+          data-aos="zoom-in"
+          data-aos-duration="2000"
+        >
           {" "}
           <div className="group h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-lg">
             <img
               className="lg:h-96 md:h-36 w-full object-cover object-center transition duration-500 ease-in-out transform group-hover:scale-105"
               src={food.img}
-              alt="blog"
+              alt="food image"
             />
 
             <h2 className="pt-4 pb-1 px-6 inline-block text-sm title-font font-semibold text-red-400 uppercase tracking-widest cursor-pointer hover:font-bold">
@@ -62,9 +68,11 @@ const ChefRecommends = () => {
             </div>
 
             <div className="pt-1 pb-4 px-6">
-              <button className="py-3 px-5 text-white font-semibold rounded bg-red-500 hover:scale-110 duration-300 ease-in-out">
-                Add to cart
-              </button>
+              <Link to="/menu">
+                <button className="py-3 px-5 text-white font-semibold rounded bg-red-500 hover:scale-110 duration-300 ease-in-out">
+                  Check Menu
+                </button>
+              </Link>
             </div>
           </div>
         </div>
