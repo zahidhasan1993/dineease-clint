@@ -29,7 +29,33 @@ const AllUser = () => {
           .then((data) => {
             if (data.acknowledged) {
               Swal.fire("Deleted!", "Your file has been deleted.", "success");
-              refetch()
+              refetch();
+            }
+          });
+      }
+    });
+  };
+
+  const handleMakeAdmin = (user) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#00008B",
+      cancelButtonColor: "#d33",
+      confirmButtonText: `Yes, Make ${user.name} Admin`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+          method: "PATCH",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            if (data.acknowledged) {
+              Swal.fire("Yaah!", `${user.name} is now admin`, "success");
+              refetch();
             }
           });
       }
@@ -101,9 +127,16 @@ const AllUser = () => {
                   </td>
                   {/* ::User Email */}
                   <td className="py-3 px-4 text-base text-gray-500 font-medium">
-                    <button className="text-sm text-red-500 font-semibold hover:text-red-600">
-                      Make Admin
-                    </button>
+                    {user.role === "admin" ? (
+                      <p>Admin</p>
+                    ) : (
+                      <button
+                        onClick={() => handleMakeAdmin(user)}
+                        className="text-sm text-red-500 font-semibold hover:text-red-600"
+                      >
+                        Make Admin
+                      </button>
+                    )}
                   </td>
 
                   {/* ::Action Buttons */}
@@ -113,7 +146,7 @@ const AllUser = () => {
                       onClick={() => handleDeleteUser(user)}
                       className="text-sm text-red-500 font-semibold hover:text-red-600"
                     >
-                      Delete
+                      Delete User
                     </button>
                   </td>
                 </tr>
