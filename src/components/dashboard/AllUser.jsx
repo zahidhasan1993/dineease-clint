@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const AllUser = () => {
   const { data: users = [], refetch } = useQuery({
@@ -8,7 +9,34 @@ const AllUser = () => {
       return res.json();
     },
   });
-  console.log(users);
+
+  const handleDeleteUser = (user) => {
+    // console.log(user._id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#00008B",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/users/${user._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.acknowledged) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+              refetch()
+            }
+          });
+      }
+    });
+  };
+  // console.log(users);
+
   return (
     <div>
       <div className="md:flex justify-between">
@@ -73,9 +101,7 @@ const AllUser = () => {
                   </td>
                   {/* ::User Email */}
                   <td className="py-3 px-4 text-base text-gray-500 font-medium">
-                  <button
-                      className="text-sm text-red-500 font-semibold hover:text-red-600"
-                    >
+                    <button className="text-sm text-red-500 font-semibold hover:text-red-600">
                       Make Admin
                     </button>
                   </td>
@@ -84,6 +110,7 @@ const AllUser = () => {
                   <td className="py-3 px-4 text-base text-gray-700 text-center font-medium">
                     {/* :::delete button */}
                     <button
+                      onClick={() => handleDeleteUser(user)}
                       className="text-sm text-red-500 font-semibold hover:text-red-600"
                     >
                       Delete

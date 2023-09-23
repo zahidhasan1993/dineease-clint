@@ -91,6 +91,13 @@ const Login = () => {
               timer: 1500,
             });
           });
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User Login successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate(from, { replace: true });
       })
       .catch((error) => {
