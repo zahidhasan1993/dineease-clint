@@ -6,6 +6,7 @@ import {
 } from "react-icons/fa";
 import img1 from "../../assets/banner/5.jpg";
 const Services = () => {
+  
   return (
     <div className="relative mx-auto p-20 w-full max-w-[86rem] bg-black text-white">
       <img
