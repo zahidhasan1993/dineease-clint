@@ -53,7 +53,7 @@ const Register = () => {
               })
                 .then((res) => res.json())
                 .then((data) => {
-                  console.log(data);
+                  // console.log(data);
                   if (data.insertedId) {
                     Swal.fire({
                       position: "top-end",
@@ -89,7 +89,7 @@ const Register = () => {
         timer: 1500,
       });
     }
-    console.log(data.captcha);
+    // console.log(data.captcha);
   };
   const googleSignUp = () => {
     googleLogin()
@@ -109,7 +109,7 @@ const Register = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (data.acknowledged) {
               Swal.fire({
                 position: "top-end",

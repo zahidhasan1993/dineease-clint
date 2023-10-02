@@ -36,7 +36,7 @@ const Shop = () => {
   const soups = menu.filter((item) => item.category === "soup");
   const offers = menu.filter((item) => item.category === "offered");
 
-  console.log(offers);
+  // console.log(offers);
   return (
     <div>
       <SectionCover img={img} name="Order From Here"></SectionCover>

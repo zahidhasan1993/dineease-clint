@@ -21,14 +21,16 @@ const AuthProvider = ({children}) => {
                     email: currentUser.email
                 })
                 .then(data => {
-                    console.log(data.data.token);
+                    // console.log(data.data.token);
                     localStorage.setItem('ACCESS-TOKEN', data.data.token);
+                    setLoader(false)
+
                 })
             }
             else{
                 localStorage.removeItem('ACCESS-TOKEN')
             }
-            setLoader(false)
+            
         })
         return () =>  unsubscribe();
     },[auth]);
