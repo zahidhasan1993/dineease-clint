@@ -16,7 +16,7 @@ import UserHome from "../components/dashboard/UserHome";
 import UserReservation from "../components/dashboard/UserReservation";
 import UserCart from "../components/dashboard/UserCart";
 import AllUser from "../components/dashboard/AllUser";
-
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -64,31 +64,43 @@ export const router = createBrowserRouter([
     children: [
       //admin dashboard routes
       {
-        path: 'adminhome',
-        element: <AdminHome></AdminHome>
+        path: "adminhome",
+        element: (
+          <AdminRoute>
+            <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'manageitems',
-        element: <ManageItems></ManageItems>
+        path: "manageitems",
+        element: (
+          <AdminRoute>
+            <ManageItems></ManageItems>
+          </AdminRoute>
+        ),
       },
       {
-        path: 'alluser',
-        element: <AllUser></AllUser>
+        path: "alluser",
+        element: (
+          <AdminRoute>
+            <AllUser></AllUser>
+          </AdminRoute>
+        ),
       },
 
       //user dashboard routes
       {
-        path: 'userhome',
-        element: <UserHome></UserHome>
+        path: "userhome",
+        element: <UserHome></UserHome>,
       },
       {
-        path: 'reservation',
-        element: <UserReservation></UserReservation>
+        path: "reservation",
+        element: <UserReservation></UserReservation>,
       },
       {
-        path: 'mycart',
-        element: <UserCart></UserCart>
-      }
-    ]
+        path: "mycart",
+        element: <UserCart></UserCart>,
+      },
+    ],
   },
 ]);
