@@ -6,10 +6,11 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
 import useTitle from "../customhooks/useTitle";
-import { DataProvider } from "../providers/AuthProvider";
+
+import useAuth from "../customhooks/useAuth";
 
 const Login = () => {
   useEffect(() => {
@@ -19,7 +20,7 @@ const Login = () => {
     window.scrollTo(0, 0);
   }, []);
   useTitle("DineEase | Login");
-  const { signInWithEmail, googleLogin } = useContext(DataProvider);
+  const { signInWithEmail, googleLogin } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";

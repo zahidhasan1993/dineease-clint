@@ -19,7 +19,7 @@ const Dashboard = () => {
     window.scrollTo(0, 0);
   }, []);
   const [isSidebarHidden, setSidebarHidden] = useState(true);
-  // const { user } = useContext(DataProvider);
+
   const { cart } = useCart();
 
   const toggleSidebar = () => {

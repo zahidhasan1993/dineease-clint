@@ -1,14 +1,14 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { DataProvider } from "../../providers/AuthProvider";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../customhooks/useCart";
 import Swal from "sweetalert2";
+import useAuth from "../../customhooks/useAuth";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const { user, logOut } = useContext(DataProvider);
+  const { user, logOut } = useAuth();
   const { cart } = useCart();
   // console.log(cart);
   const handleMouseHover = () => {
@@ -18,12 +18,12 @@ const Navbar = () => {
     logOut()
       .then(() => {
         Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'User Logged Out Successful!',
+          position: "top-end",
+          icon: "success",
+          title: "User Logged Out Successful!",
           showConfirmButton: false,
-          timer: 1500
-        })
+          timer: 1500,
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -76,7 +76,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex gap-5 justify-center items-center">
               <div className="flex gap-1">
-                <Link to='dashboard/mycart'>
+                <Link to="dashboard/mycart">
                   <FaShoppingCart className="text-2xl"></FaShoppingCart>
                 </Link>
                 <sub className="font-semibold text-[15px]">

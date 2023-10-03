@@ -1,12 +1,12 @@
-import { useContext, useEffect } from "react";
-import { DataProvider } from "../../providers/AuthProvider";
+import { useEffect } from "react";
 import useMenu from "../../customhooks/useMenu";
 import { PiForkKnifeBold } from "react-icons/pi";
+import useAuth from "../../customhooks/useAuth";
 const AdminHome = () => {
-  useEffect(()=> {
-    window.scrollTo(0,0);
-  },[])
-  const { user } = useContext(DataProvider);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const { user } = useAuth();
   const menu = useMenu();
   // console.log(user);
   return (

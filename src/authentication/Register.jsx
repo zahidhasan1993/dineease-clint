@@ -6,10 +6,10 @@ import {
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import Swal from "sweetalert2";
-import { DataProvider } from "../providers/AuthProvider";
 import useTitle from "../customhooks/useTitle";
+import useAuth from "../customhooks/useAuth";
 
 const Register = () => {
   useTitle("DineEase | register");
@@ -20,7 +20,7 @@ const Register = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
-  const { emailLogin, googleLogin, updateUser } = useContext(DataProvider);
+  const { emailLogin, googleLogin, updateUser } = useAuth();
 
   const {
     register,
