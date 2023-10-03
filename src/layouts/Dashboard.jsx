@@ -13,8 +13,10 @@ import { PiForkKnifeBold } from "react-icons/pi";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import useCart from "../customhooks/useCart";
 import useTitle from "../customhooks/useTitle";
+import useAdmin from "../customhooks/useAdmin";
 
 const Dashboard = () => {
+  const {isAdmin} = useAdmin();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -26,8 +28,6 @@ const Dashboard = () => {
     setSidebarHidden(!isSidebarHidden);
   };
   useTitle("DineEase | DashBoard");
-
-  const isAdmin = true;
 
   return (
     <div className="bg-gray-200 md:min-h-screen lg:flex md:mt-5">
