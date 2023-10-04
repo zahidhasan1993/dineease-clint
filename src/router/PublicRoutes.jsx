@@ -17,6 +17,7 @@ import UserReservation from "../components/dashboard/UserReservation";
 import UserCart from "../components/dashboard/UserCart";
 import AllUser from "../components/dashboard/AllUser";
 import AdminRoute from "./AdminRoute";
+import AddItem from "../components/dashboard/AddItem";
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,14 @@ export const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AdminHome></AdminHome>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "additem",
+        element: (
+          <AdminRoute>
+            <AddItem></AddItem>
           </AdminRoute>
         ),
       },

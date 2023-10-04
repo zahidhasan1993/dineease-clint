@@ -54,7 +54,7 @@ const Menu = () => {
         </div>
         <Link
           to="/shop/offer"
-          className="mt-5 mb-10 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
+          className="mt-5 mb-10 text-xl border-b-4  border-red-700    py-5 px-14 hover:border-none text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
         >
           Order Your Food Now
         </Link>
@@ -73,7 +73,7 @@ const Menu = () => {
         </div>
         <Link
           to="/shop/pizza"
-          className="mt-5 mb-10 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
+          className="mt-5 mb-10 text-xl border-b-4  border-red-700      py-5 px-14 hover:border-none text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
         >
           Order Your Food Now
         </Link>
@@ -92,7 +92,7 @@ const Menu = () => {
         </div>
         <Link
           to="/shop/soup"
-          className="mt-5 mb-10 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
+          className="mt-5 mb-10 text-xl border-b-4  border-red-700     py-5 px-14 hover:border-none text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
         >
           Order Your Food Now
         </Link>
@@ -111,7 +111,7 @@ const Menu = () => {
         </div>
         <Link
           to="/shop/salad"
-          className="mt-5 mb-10 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
+          className="mt-5 mb-10 text-xl border-b-4  border-red-700     py-5 px-14 hover:border-none text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
         >
           Order Your Food Now
         </Link>
@@ -130,7 +130,7 @@ const Menu = () => {
         </div>
         <Link
           to="/shop/dessert"
-          className="mt-5 mb-10 text-xl border-b-2 py-5 px-14 text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105"
+          className="mt-5 mb-10 text-xl border-b-4  border-red-700 py-5 px-14 hover:border-none text-red-700 hover:bg-red-500 hover:text-white rounded-lg transition-colors duration-300 transform hover:scale-105 "
         >
           Order Your Food Now
         </Link>
