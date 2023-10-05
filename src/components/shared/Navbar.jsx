@@ -148,10 +148,10 @@ const Navbar = () => {
                 onMouseLeave={handleMouseHover}
                 className="flex gap-5 justify-center items-center"
               >
-                <div className="flex gap-1">
+                <Link to="dashboard/mycart" className="flex gap-1">
                   <FaShoppingCart className="text-2xl"></FaShoppingCart>
                   <sub className="font-semibold">{cart.length || 0}</sub>
-                </div>
+                </Link>
 
                 {isHover && (
                   <p className="font-semibold ">{user.displayName}</p>

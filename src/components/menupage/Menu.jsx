@@ -23,18 +23,18 @@ const Menu = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const menuData = useMenu();
-  const pizzas = menuData
+  const {menu} = useMenu();
+  const pizzas = menu
     .filter((data) => data.category === "pizza")
     .slice(0, 6);
-  const soups = menuData.filter((data) => data.category === "soup").slice(0, 6);
-  const desserts = menuData
+  const soups = menu.filter((data) => data.category === "soup").slice(0, 6);
+  const desserts = menu
     .filter((data) => data.category === "dessert")
     .slice(0, 6);
-  const salads = menuData
+  const salads = menu
     .filter((data) => data.category === "salad")
     .slice(0, 6);
-  const offers = menuData
+  const offers = menu
     .filter((data) => data.category === "offered")
     .slice(0, 6);
   // console.log(desserts);

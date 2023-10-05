@@ -28,7 +28,7 @@ const Shop = () => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
   // console.log(category);
-  const menu = useMenu();
+  const {menu} = useMenu();
   const pizzas = menu.filter((item) => item.category === "pizza");
   const desserts = menu.filter((item) => item.category === "dessert");
   const salads = menu.filter((item) => item.category === "salad");
@@ -52,6 +52,8 @@ const Shop = () => {
           <Tab id="dessertTab">Dessert</Tab>
           <Tab id="soupTab">Soup</Tab>
           <Tab id="offeredTab">Offer</Tab>
+          <Tab id="allTab">All Foods</Tab>
+
         </TabList>
 
         <TabPanel className="mt-20">
@@ -123,6 +125,18 @@ const Shop = () => {
           >
             {offers.map((offer) => (
               <ShopCard key={offer._id} item={offer}></ShopCard>
+            ))}
+          </div>
+        </TabPanel>
+        <TabPanel className="mt-20">
+          <div
+            data-aos="slide-left"
+            data-aos-duration="1000"
+            data-aos-easing="ease-in-out"
+            className="md:grid md:grid-cols-3"
+          >
+            {menu.map((item) => (
+              <ShopCard key={item._id} item={item}></ShopCard>
             ))}
           </div>
         </TabPanel>

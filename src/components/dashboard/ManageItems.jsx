@@ -1,7 +1,34 @@
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../customhooks/useAxiosSecure";
 import useMenu from "../../customhooks/useMenu";
+import { Link } from "react-router-dom";
 
 const ManageItems = () => {
-  const menu = useMenu();
+  const { menu, refetch } = useMenu();
+  const myAxios = useAxiosSecure();
+
+  const handleDelete = (item) => {
+    // console.log(item);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#00008B",
+      cancelButtonColor: "#d33",
+      confirmButtonText: `Yes, Delete this item`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        myAxios.delete(`/menu/${item._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire("Item Deleted");
+            refetch();
+          }
+          console.log(res.data);
+        });
+      }
+    });
+  };
   return (
     <div>
       <h1 className="text-5xl">
@@ -77,13 +104,16 @@ const ManageItems = () => {
                     </td>
 
                     <td className="py-3 px-4 text-base text-gray-500 font-medium">
-                      <button className="text-sm text-red-500 font-semibold hover:text-red-600">
+                      <Link to={`/dashboard/updateItem/${item._id}`} className="text-sm text-red-500 font-semibold hover:text-red-600">
                         Update
-                      </button>
+                      </Link>
                     </td>
 
                     <td className="py-3 px-4 text-base text-gray-700 text-center font-medium">
-                      <button className="text-sm text-red-500 font-semibold hover:text-red-600">
+                      <button
+                        onClick={() => handleDelete(item)}
+                        className="text-sm text-red-500 font-semibold hover:text-red-600"
+                      >
                         Delete
                       </button>
                     </td>

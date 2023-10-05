@@ -7,7 +7,7 @@ const AdminHome = () => {
     window.scrollTo(0, 0);
   }, []);
   const { user } = useAuth();
-  const menu = useMenu();
+  const {menu} = useMenu();
   // console.log(user);
   return (
     <div>
