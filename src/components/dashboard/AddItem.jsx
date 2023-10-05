@@ -1,14 +1,56 @@
 import { useForm } from "react-hook-form";
+import useAxiosSecure from "../../customhooks/useAxiosSecure";
+import Swal from "sweetalert2";
+
+const imgToken = import.meta.env.VITE_IMG_TOKEN;
 
 const AddItem = () => {
+  const myAxios = useAxiosSecure();
+  const imgURL = `https://api.imgbb.com/1/upload?key=${imgToken}`;
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    console.log(data);
-};
+    // console.log(data);
+
+    const formData = new FormData();
+
+    formData.append("image", data.image[0]);
+
+    fetch(imgURL, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then(async (imgRes) => {
+        console.log(imgRes);
+
+        const item = {
+          name: data.name,
+          recipe: data.recipe,
+          image: imgRes.data.display_url,
+          category: data.category,
+          price: parseFloat(data.price),
+        };
+
+        if (imgRes.success) {
+          const res = await myAxios.post("/menu", item);
+          console.log(res.data);
+          if (res.data.acknowledged) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Item Added Successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        }
+      });
+  };
 
   return (
     <div>
