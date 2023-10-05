@@ -19,6 +19,7 @@ import AllUser from "../components/dashboard/AllUser";
 import AdminRoute from "./AdminRoute";
 import AddItem from "../components/dashboard/AddItem";
 import UpdateItem from "../components/dashboard/UpdateItem";
+import BookTable from "../components/dashboard/BookTable";
 
 export const router = createBrowserRouter([
   {
@@ -121,6 +122,10 @@ export const router = createBrowserRouter([
         path: "mycart",
         element: <UserCart></UserCart>,
       },
+      {
+        path: "bookTable",
+        element: <BookTable></BookTable>
+      }
     ],
   },
 ]);
