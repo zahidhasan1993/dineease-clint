@@ -11,6 +11,7 @@ const AddItem = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
   const onSubmit = (data) => {
@@ -47,8 +48,11 @@ const AddItem = () => {
               showConfirmButton: false,
               timer: 1500,
             });
+            
           }
+
         }
+        reset()
       });
   };
 
