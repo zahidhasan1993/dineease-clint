@@ -13,13 +13,14 @@ import Dashboard from "../layouts/Dashboard";
 import AdminHome from "../components/dashboard/AdminHome";
 import ManageItems from "../components/dashboard/ManageItems";
 import UserHome from "../components/dashboard/UserHome";
-import UserReservation from "../components/dashboard/UserReservation";
 import UserCart from "../components/dashboard/UserCart";
 import AllUser from "../components/dashboard/AllUser";
 import AdminRoute from "./AdminRoute";
 import AddItem from "../components/dashboard/AddItem";
 import UpdateItem from "../components/dashboard/UpdateItem";
 import BookTable from "../components/dashboard/BookTable";
+import AddReview from "../components/dashboard/AddReview";
+import MyBookings from "../components/dashboard/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -91,7 +92,7 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "updateItem/:id", 
+        path: "updateItem/:id",
         element: (
           <AdminRoute>
             <UpdateItem></UpdateItem>
@@ -115,16 +116,20 @@ export const router = createBrowserRouter([
         element: <UserHome></UserHome>,
       },
       {
-        path: "reservation",
-        element: <UserReservation></UserReservation>,
-      },
-      {
         path: "mycart",
         element: <UserCart></UserCart>,
       },
       {
         path: "bookTable",
-        element: <BookTable></BookTable>
+        element: <BookTable></BookTable>,
+      },
+      {
+        path: "addreview",
+        element: <AddReview></AddReview>,
+      },
+      {
+        path: 'mybookings',
+        element: <MyBookings></MyBookings>
       }
     ],
   },
