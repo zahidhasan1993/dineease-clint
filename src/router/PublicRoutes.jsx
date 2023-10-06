@@ -21,6 +21,7 @@ import UpdateItem from "../components/dashboard/UpdateItem";
 import BookTable from "../components/dashboard/BookTable";
 import AddReview from "../components/dashboard/AddReview";
 import MyBookings from "../components/dashboard/MyBookings";
+import ManageBookings from "../components/dashboard/ManageBookings";
 
 export const router = createBrowserRouter([
   {
@@ -109,6 +110,14 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: "managebooking",
+        element: (
+          <AdminRoute>
+            <ManageBookings></ManageBookings>
+          </AdminRoute>
+        ),
+      },
 
       //user dashboard routes
       {
@@ -128,9 +137,9 @@ export const router = createBrowserRouter([
         element: <AddReview></AddReview>,
       },
       {
-        path: 'mybookings',
-        element: <MyBookings></MyBookings>
-      }
+        path: "mybookings",
+        element: <MyBookings></MyBookings>,
+      },
     ],
   },
 ]);

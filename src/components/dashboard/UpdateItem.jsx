@@ -28,14 +28,14 @@ const UpdateItem = () => {
       showCancelButton: true,
       confirmButtonColor: "#00008B",
       cancelButtonColor: "#d33",
-      confirmButtonText: `Yes, Delete this item`,
+      confirmButtonText: `Yes, Update This Item`,
     }).then((result) => {
       if (result.isConfirmed) {
         myAxios.patch(`/menu/${_id}`, updatedDoc).then((res) => {
-            if (res.data.deletedCount > 0) {
-                Swal.fire("Item Deleted");
-                
-              }
+          // console.log(res.data);
+          if (res.data.modifiedCount > 0) {
+            Swal.fire("Item Updated", "Your booking has canceled.", "success");
+          }
         });
       }
     });

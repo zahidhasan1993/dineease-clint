@@ -99,7 +99,7 @@ const Dashboard = () => {
               </NavLink>
 
               <NavLink
-                to="managebookings"
+                to="managebooking"
                 className={({ isActive }) =>
                   isActive
                     ? "px-4 py-3 flex items-center space-x-4 rounded-lg text-white bg-gradient-to-r from-sky-600 to-cyan-400"
