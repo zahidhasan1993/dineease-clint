@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../customhooks/useAuth";
 import Swal from "sweetalert2";
-import { useQuery } from "@tanstack/react-query";
 
 const MyBookings = () => {
   const { user } = useAuth();
