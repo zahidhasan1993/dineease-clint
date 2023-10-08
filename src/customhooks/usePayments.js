@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 const usePayments = () => {
     const [payments, setPayments] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/payment")
+        fetch("https://dineease-server-lemon.vercel.app/payment")
           .then((res) => res.json())
           .then((data) => {
             setPayments(data);

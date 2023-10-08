@@ -101,7 +101,7 @@ export const router = createBrowserRouter([
           </AdminRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/menu/${params.id}`),
+          fetch(`https://dineease-server-lemon.vercel.app/menu/${params.id}`),
       },
       {
         path: "alluser",

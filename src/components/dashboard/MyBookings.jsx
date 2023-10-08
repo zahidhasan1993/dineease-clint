@@ -7,7 +7,7 @@ const MyBookings = () => {
 
   const [bookings, setBookings] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/booking/${user.email}`)
+    fetch(`https://dineease-server-lemon.vercel.app/booking/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         setBookings(data);
@@ -26,7 +26,7 @@ const MyBookings = () => {
       confirmButtonText: "Yes, delete Booking!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/booking/${id}`, {
+        fetch(`booking/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

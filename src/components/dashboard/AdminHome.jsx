@@ -17,7 +17,7 @@ const AdminHome = () => {
       return res.data;
     },
   });
-  console.log(stats);
+  // console.log(stats);
 
   const { user } = useAuth();
 

@@ -5,7 +5,7 @@ const ManageBookings = () => {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/bookings")
+    fetch("https://dineease-server-lemon.vercel.app/bookings")
       .then((res) => res.json())
       .then((data) => {
         setBookings(data);
@@ -22,7 +22,7 @@ const ManageBookings = () => {
       confirmButtonText: 'Yes! Approved',
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://dineease-server-lemon.vercel.app/bookings/${id}`, {
           method: "PATCH",
         })
           .then((res) => res.json())

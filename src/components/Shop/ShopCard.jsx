@@ -19,7 +19,7 @@ const ShopCard = ({ item }) => {
         userEmail: user.email,
       };
 
-      fetch("http://localhost:5000/carts", {
+      fetch("https://dineease-server-lemon.vercel.app/carts", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
