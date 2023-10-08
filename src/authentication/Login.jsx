@@ -74,7 +74,7 @@ const Login = () => {
           name: user.displayName,
           email: user.email,
         };
-        fetch("http://localhost:5000/users", {
+        fetch("https://dineease-server-lemon.vercel.app/users", {
           method: "POST",
           headers: {
             "Content-type": "application/json; charset=UTF-8",

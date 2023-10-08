@@ -27,7 +27,7 @@ const AdminHome = () => {
         Hi welcome back <span className="text-red-700">{user.displayName}</span>{" "}
         !
       </h1>
-      <div className="mt-10 md:grid md:grid-cols-3 md:gap-8">
+      <div className="mt-10 ml-10 grid gap-5  md:grid md:grid-cols-3 md:gap-8">
         <div className="text-white bg-gradient-to-r from-red-700 to-pink-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5">
           <PiForkKnifeBold className="text-4xl"></PiForkKnifeBold>
           <div className="text-2xl font-semibold">

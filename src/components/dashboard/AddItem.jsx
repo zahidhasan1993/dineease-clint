@@ -90,6 +90,7 @@ const AddItem = () => {
                 className="py-3 px-2 bg-white"
                 {...register("category", { required: "category is required" })}
               >
+                <option>regular</option>
                 <option>pizza</option>
                 <option>salad</option>
                 <option>drinks</option>

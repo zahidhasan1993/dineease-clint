@@ -24,7 +24,7 @@ const UserCart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`/carts/${item._id}`, {
+        fetch(`https://dineease-server-lemon.vercel.app/carts/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -44,8 +44,8 @@ const UserCart = () => {
         <h1 className="text-4xl font-medium mb-5 md:mb-0">
           Total Item : {cart.length}
         </h1>
-        <h1 className="text-4xl font-medium">Total price : ${newTotalPrice}</h1>
-        <Link to="/dashboard/payment" className="py-3 px-7 mt-5 md:mt-0 text-white font-bold bg-red-700 rounded-lg hover:bg-red-500 hover:scale-125 duration-300">
+        <h1 className="text-4xl font-medium mb-10 md:mb-0">Total price : ${newTotalPrice}</h1>
+        <Link to="/dashboard/payment" className="py-3 px-7 md:mt-0 text-white font-bold bg-red-700 rounded-lg hover:bg-red-500 hover:scale-125 duration-300">
           Pay
         </Link>
       </div>

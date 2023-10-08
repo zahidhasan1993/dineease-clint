@@ -43,21 +43,21 @@ const UserHome = () => {
         Welcome back <span className="text-red-700">{user.displayName}</span>
       </h1>
       <div className="mt-20 md:flex md:gap-10">
-        <div className="text-white bg-gradient-to-r from-red-700 to-pink-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5">
+        <div className="text-white bg-gradient-to-r from-red-700 to-pink-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5 mb-5 md:mb-0">
           <PiForkKnifeBold className="text-5xl"></PiForkKnifeBold>
           <div className="text-2xl font-semibold">
             <h1>{menu.length}</h1>
             <p>Items</p>
           </div>
         </div>
-        <div className="text-white bg-gradient-to-r from-violet-700 to-blue-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5">
+        <div className="text-white bg-gradient-to-r from-violet-700 to-blue-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5 mb-5 md:mb-0">
           <FaShoppingBag className="text-5xl"></FaShoppingBag>
           <div className="text-2xl font-semibold">
             <h1>13</h1>
             <p>Shops</p>
           </div>
         </div>
-        <div className="text-white bg-gradient-to-r from-orange-700 to-amber-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5">
+        <div className="text-white bg-gradient-to-r from-orange-700 to-amber-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5 mb-5 md:mb-0">
           <FaPhoneAlt className="text-5xl"></FaPhoneAlt>
           <div className="text-2xl font-semibold">
             <h1>2</h1>

@@ -12,7 +12,6 @@ import Services from "./Services";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-
 const Home = () => {
   useTitle("DineEase | Home");
   useEffect(() => {
@@ -22,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
+
   return (
     <div>
       <Banner></Banner>
@@ -36,7 +35,7 @@ const Home = () => {
       </div>
       <div
         className="mb-20"
-        data-aos="zoom-out"
+        data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >
@@ -45,7 +44,7 @@ const Home = () => {
       </div>
       <div
         className="mb-20"
-        data-aos="fade-right"
+        data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >
@@ -54,7 +53,7 @@ const Home = () => {
       </div>
       <div
         className="mb-20"
-        data-aos="flip-down"
+        data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >
@@ -62,7 +61,7 @@ const Home = () => {
       </div>
       <div
         className="mb-20"
-        data-aos="zoom-out-right"
+        data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >
@@ -74,7 +73,7 @@ const Home = () => {
       </div>
       <div
         className="mb-20"
-        data-aos="zoom-out"
+        data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-easing="ease-in-out"
       >

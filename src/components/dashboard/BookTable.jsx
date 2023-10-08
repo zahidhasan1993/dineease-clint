@@ -26,7 +26,7 @@ const BookTable = () => {
       confirmButtonText: "Yes, Book My Table",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/booking", {
+        fetch("https://dineease-server-lemon.vercel.app/booking", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

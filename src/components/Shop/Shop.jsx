@@ -58,7 +58,7 @@ const Shop = () => {
 
         <TabPanel className="mt-20">
           <div
-            data-aos="slide-left"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="md:grid md:grid-cols-3"
@@ -70,7 +70,7 @@ const Shop = () => {
         </TabPanel>
         <TabPanel className="mt-20">
           <div
-            data-aos="slide-left"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="md:grid md:grid-cols-3"
@@ -82,7 +82,7 @@ const Shop = () => {
         </TabPanel>
         <TabPanel className="mt-20">
           <div
-            data-aos="slide-left"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="md:grid md:grid-cols-3"
@@ -94,7 +94,7 @@ const Shop = () => {
         </TabPanel>
         <TabPanel className="mt-20">
           <div
-            data-aos="slide-left"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="md:grid md:grid-cols-3"
@@ -106,7 +106,7 @@ const Shop = () => {
         </TabPanel>
         <TabPanel className="mt-20">
           <div
-            data-aos="slide-left"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="md:grid md:grid-cols-3"
@@ -118,7 +118,7 @@ const Shop = () => {
         </TabPanel>
         <TabPanel className="mt-20">
           <div
-            data-aos="slide-left"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="md:grid md:grid-cols-3"
@@ -130,7 +130,7 @@ const Shop = () => {
         </TabPanel>
         <TabPanel className="mt-20">
           <div
-            data-aos="slide-left"
+            data-aos="zoom-in"
             data-aos-duration="1000"
             data-aos-easing="ease-in-out"
             className="md:grid md:grid-cols-3"

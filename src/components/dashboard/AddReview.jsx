@@ -22,7 +22,7 @@ const AddReview = () => {
       confirmButtonText: "Yes, Book My Table",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch("http://localhost:5000/review", {
+        fetch("https://dineease-server-lemon.vercel.app/review", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
