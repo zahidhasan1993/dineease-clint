@@ -12,6 +12,7 @@ import Services from "./Services";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
+
 const Home = () => {
   useTitle("DineEase | Home");
   useEffect(() => {
@@ -21,7 +22,7 @@ const Home = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
+  
   return (
     <div>
       <Banner></Banner>

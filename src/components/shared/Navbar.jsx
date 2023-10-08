@@ -4,12 +4,14 @@ import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../customhooks/useCart";
 import Swal from "sweetalert2";
 import useAuth from "../../customhooks/useAuth";
+import useAdmin from "../../customhooks/useAdmin";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const { user, logOut } = useAuth();
   const { cart } = useCart();
+  const {isAdmin} = useAdmin();
   // console.log(cart);
   const handleMouseHover = () => {
     setIsHover(!isHover);
@@ -47,7 +49,7 @@ const Navbar = () => {
         Contact
       </NavLink>
       {user ? (
-        <NavLink to="/dashboard" className="mr-8 hover:text-gray-300">
+        <NavLink to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'} className="mr-8 hover:text-gray-300">
           Dashboard
         </NavLink>
       ) : (

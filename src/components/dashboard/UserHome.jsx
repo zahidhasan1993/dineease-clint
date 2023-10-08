@@ -6,7 +6,6 @@ import {
   FaRegCalendarCheck,
   FaShoppingBag,
   FaStar,
-  FaWallet,
 } from "react-icons/fa";
 import useCart from "../../customhooks/useCart";
 import { useEffect, useState } from "react";
@@ -32,6 +31,7 @@ const UserHome = () => {
         setBookings(data);
       });
   }, []);
+
   const myReviews = reviews.filter(
     (review) => user.displayName === review.name
   );
@@ -79,10 +79,6 @@ const UserHome = () => {
           <div className="flex items-center gap-2 text-xl mb-2">
             <FaRegCalendarCheck></FaRegCalendarCheck>
             <p>Bookings : {myBookings.length}</p>
-          </div>
-          <div className="flex items-center gap-2 text-xl mb-2">
-            <FaWallet></FaWallet>
-            <p>Payments : {myBookings.length}</p>
           </div>
         </div>
       </div>
