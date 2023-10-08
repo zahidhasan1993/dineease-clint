@@ -22,6 +22,7 @@ import BookTable from "../components/dashboard/BookTable";
 import AddReview from "../components/dashboard/AddReview";
 import MyBookings from "../components/dashboard/MyBookings";
 import ManageBookings from "../components/dashboard/ManageBookings";
+import Payment from "../components/dashboard/Payment";
 
 export const router = createBrowserRouter([
   {
@@ -140,6 +141,10 @@ export const router = createBrowserRouter([
         path: "mybookings",
         element: <MyBookings></MyBookings>,
       },
+      {
+        path: "payment",
+        element: <Payment></Payment>
+      }
     ],
   },
 ]);

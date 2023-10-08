@@ -3,7 +3,7 @@ import useAuth from "../../customhooks/useAuth";
 import Swal from "sweetalert2";
 
 const AddReview = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit,reset } = useForm();
   const { user } = useAuth();
   const onSubmit = (data) => {
     console.log(data);
@@ -34,6 +34,7 @@ const AddReview = () => {
             console.log(data);
             if (data.acknowledged) {
               Swal.fire("BOOKED!", "Your table has been booked.", "success");
+              reset();
             }
           });
       }

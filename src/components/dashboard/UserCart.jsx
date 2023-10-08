@@ -1,9 +1,10 @@
 import Swal from "sweetalert2";
 import useCart from "../../customhooks/useCart";
 import useTitle from "../../customhooks/useTitle";
+import { Link } from "react-router-dom";
 
 const UserCart = () => {
-  useTitle("Dashboard | Cart")
+  useTitle("Dashboard | Cart");
   const { cart, refetch } = useCart();
   const totalPrice = cart.reduce(
     (a, currentValue) => a + currentValue.price,
@@ -44,9 +45,9 @@ const UserCart = () => {
           Total Item : {cart.length}
         </h1>
         <h1 className="text-4xl font-medium">Total price : ${newTotalPrice}</h1>
-        <button className="py-3 px-7 mt-5 md:mt-0 text-white font-bold bg-red-700 rounded-lg hover:bg-red-500 hover:scale-125 duration-300">
+        <Link to="/dashboard/payment" className="py-3 px-7 mt-5 md:mt-0 text-white font-bold bg-red-700 rounded-lg hover:bg-red-500 hover:scale-125 duration-300">
           Pay
-        </button>
+        </Link>
       </div>
       <div className="mt-20">
         <div className="mx-auto pb-8 w-full max-w-7xl overflow-x-auto">
