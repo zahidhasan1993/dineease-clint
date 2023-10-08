@@ -14,7 +14,7 @@ const UpdateItem = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const updateName = data.name;
     const updatePrice = data.price;
     const updatedDoc = {

@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../customhooks/useAxiosSecure";
 import useAuth from "../../customhooks/useAuth";
+import Swal from "sweetalert2";
 
 const CheckOut = ({ price }) => {
   const myAxios = useAxiosSecure();
@@ -12,12 +13,11 @@ const CheckOut = ({ price }) => {
   const elements = useElements();
 
   useEffect(() => {
-    myAxios.post('/create-payment-intent',{price})
-    .then(res => {
+    myAxios.post("/create-payment-intent", { price }).then((res) => {
       // console.log(res.data);
       setClintSecret(res.data.clientSecret);
-    })
-  }, [price,myAxios]);
+    });
+  }, [price, myAxios]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -44,9 +44,8 @@ const CheckOut = ({ price }) => {
       setCardError("");
     }
     console.log("payment card", card);
-    const { paymentIntent, error: cardError } = await stripe.confirmCardPayment(
-      clintSecret,
-      {
+    const { paymentIntent, error: confirmError } =
+      await stripe.confirmCardPayment(clintSecret, {
         payment_method: {
           card: card,
           billing_details: {
@@ -54,11 +53,35 @@ const CheckOut = ({ price }) => {
             email: user?.email,
           },
         },
-      }
-    );
-    // console.log("card info", card);
+      });
+    if (confirmError) {
+      console.log(confirmError);
+      // setCardError(confirmError)
+    }
+    console.log("payment intent", paymentIntent);
+    if (paymentIntent.status === "succeeded") {
+      const transactionId = paymentIntent.id;
+      console.log(transactionId);
+      const paymentData = {
+        email: user?.email,
+        amount: price,
+        transactionId: transactionId,
+      };
+      myAxios.post("/payment", paymentData).then((res) => {
+        console.log('res data',res.data);
+        if (res.data.result.acknowledged) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Payment Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
+    }
   };
-  console.log(clintSecret);
+  // console.log(clintSecret);
   return (
     <>
       {" "}
@@ -81,7 +104,7 @@ const CheckOut = ({ price }) => {
         />
         <button
           type="submit"
-          disabled={!stripe}
+          disabled={!stripe || !clintSecret}
           className="py-2 px-5 mt-8 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-500 hover:scale-125 duration-300"
         >
           Pay
