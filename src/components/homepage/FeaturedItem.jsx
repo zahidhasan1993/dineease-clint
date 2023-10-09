@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import img1 from "../../assets/moreimage/chad-montano-lP5MCM6nZ5A-unsplash.jpg"
 import img2 from "../../assets/moreimage/masimo-grabar-NzHRSLhc6Cs-unsplash.jpg";
 
@@ -18,12 +19,12 @@ const FeaturedItem = () => {
                 </p>
               </header>
 
-              <a
-                href="#"
+              <Link
+                to='/menu'
                 className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-red-500  rounded hover:bg-red-700 focus:outline-none focus:ring"
               >
                 See Menu
-              </a>
+              </Link>
             </div>
           </div>
 
