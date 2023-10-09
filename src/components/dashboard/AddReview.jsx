@@ -19,7 +19,7 @@ const AddReview = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, Book My Table",
+      confirmButtonText: "Yes, Give my review",
     }).then((result) => {
       if (result.isConfirmed) {
         fetch("https://dineease-server-lemon.vercel.app/review", {
@@ -33,7 +33,7 @@ const AddReview = () => {
           .then((data) => {
             console.log(data);
             if (data.acknowledged) {
-              Swal.fire("BOOKED!", "Your table has been booked.", "success");
+              Swal.fire("Thanx!", "Your review is important for us.", "success");
               reset();
             }
           });
