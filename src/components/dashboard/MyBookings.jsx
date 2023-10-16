@@ -26,7 +26,7 @@ const MyBookings = () => {
       confirmButtonText: "Yes, delete Booking!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`booking/${id}`, {
+        fetch(`https://dineease-server-lemon.vercel.app/booking/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
