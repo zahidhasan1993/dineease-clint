@@ -17,7 +17,7 @@ const Services = () => {
 
       <div className="relative w-full flex flex-col lg:flex-row justify-center items-center">
         <div className="flex-shrink-0 mx-auto mb-10 px-4 text-center lg:text-left">
-          <h2 className="text-2xl sm:text-4xl lg:text-5xl text-white text-opacity-80 font-rubik tracking-wider space-y-3">
+          <h2 className="text-2xl sm:text-4xl lg:text-5xl text-white text-opacity-80 font-rubik font-fontOne tracking-wider space-y-3">
             <span className="block">
               Get <b className="text-red-700">Delicias</b> Food
             </span>

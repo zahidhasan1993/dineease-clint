@@ -52,7 +52,7 @@ const AdminHome = () => {
         <div className="text-white bg-gradient-to-r from-orange-700 to-amber-500 w-72 rounded-lg h-36 p-8 flex justify-center items-center gap-5">
           <FaMoneyBillAlt className="text-4xl"></FaMoneyBillAlt>
           <div className="text-2xl font-semibold">
-            <h1>${stats.revenue}</h1>
+            <h1>${stats.revenue?.toFixed(2)}</h1>
             <p>Revenue</p>
           </div>
         </div>
